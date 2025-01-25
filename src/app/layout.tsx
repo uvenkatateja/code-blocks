@@ -6,6 +6,9 @@ import "@/styles/globals.css";
 import { fontMono, fontSans } from "@/components/ui/fonts";
 import { cn } from "@/utils/cn";
 
+// Providers:
+import { ThemeProvider } from "@/providers/themeProvider";
+
 // Metadata:
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,7 +31,14 @@ export default function RootLayout({
           "scroll-smooth"
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
