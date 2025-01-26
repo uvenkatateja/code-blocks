@@ -28,6 +28,7 @@
     "shiki": "2.1.0",
     "tailwind-merge": "2.6.0",
     "tailwindcss-animate": "1.0.7",
+    "unist-builder": "3.0.0",
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
