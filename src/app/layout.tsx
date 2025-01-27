@@ -8,6 +8,7 @@ import { cn } from "@/utils/cn";
 
 // Providers:
 import { ThemeProvider } from "@/providers/themeProvider";
+import Sidebar from "@/components/layout/sidebar";
 
 // Metadata:
 export const metadata: Metadata = {
@@ -26,9 +27,10 @@ export default function RootLayout({
         className={cn(
           `${fontSans.variable} ${fontMono.variable}`,
           "font-sans antialiased",
-          "bg-neutral-100 dark:bg-neutral-900",
-          "text-neutral-900 dark:text-neutral-50",
-          "scroll-smooth"
+          "bg-neutral-50 dark:bg-neutral-900",
+          "text-black dark:text-white",
+          "selection:bg-neutral-200 selection:text-neutral-900 dark:selection:bg-neutral-800 dark:selection:text-neutral-50",
+          "scroll-smooth",
         )}
       >
         <ThemeProvider
@@ -37,7 +39,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Sidebar />
+          <main className={cn("container mx-auto max-w-3xl py-12")}>
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

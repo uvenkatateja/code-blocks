@@ -2,27 +2,35 @@ import type { Metadata } from "next";
 
 import { allDocs } from "content-collections";
 import { notFound } from "next/navigation";
+
 import { MDX } from "@/mdx/mdx";
 import Article from "@/components/article";
 import ToC from "@/components/layout/toc";
+import ArticleHeader from "@/components/articleHeader";
 
-const indexPage = "index";
+type DocPageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-export async function generateMetadata(): Promise<Metadata> {
-  const document = allDocs.find((post) => post.slug === indexPage);
+export async function generateMetadata({
+  params,
+}: DocPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const document = allDocs.find((post) => post.slug === slug);
 
   if (!document) {
     return notFound();
   }
 
   return {
-    title: `${document.title} - @pheralb/codeblocks`,
+    title: document.title,
     description: document.description,
   };
 }
 
-const Page = () => {
-  const document = allDocs.find((post) => post.slug === indexPage);
+export default async function DocPage({ params }: DocPageProps) {
+  const { slug } = await params;
+  const document = allDocs.find((post) => post.slug === slug);
 
   if (!document) {
     return notFound();
@@ -30,12 +38,11 @@ const Page = () => {
 
   return (
     <>
+      <ArticleHeader data={document} />
       <Article>
         <MDX code={document.mdx} />
       </Article>
       <ToC tocData={document.toc} />
     </>
   );
-};
-
-export default Page;
+}

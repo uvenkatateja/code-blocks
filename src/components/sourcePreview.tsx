@@ -61,15 +61,8 @@ const ComponentPreview = ({
   );
 };
 
-const ComponentSource = ({ name, children }: ComponentSourceProps) => {
-  return (
-    children && (
-      <div>
-        <p>{name}</p>
-        {children}
-      </div>
-    )
-  );
+const ComponentSource = ({ children }: ComponentSourceProps) => {
+  return children && <div>{children}</div>;
 };
 
 export { ComponentSource, ComponentPreview };
