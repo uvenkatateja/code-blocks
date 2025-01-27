@@ -32,6 +32,12 @@ const shikiOptions: RehypeShikiOptions = {
         node.properties["data-code"] = this.source;
       },
     },
+    {
+      name: "WordWrap",
+      pre(node) {
+        node.properties["style"] = "white-space: pre-wrap;";
+      },
+    },
   ],
 };
 
@@ -43,6 +49,7 @@ const docs = defineCollection({
   schema: (z) => ({
     title: z.string(),
     description: z.string(),
+    category: z.string(),
   }),
   transform: async (document, context) => {
     const filePath = path.join(
@@ -74,7 +81,7 @@ const docs = defineCollection({
       ],
     });
     const slugger = new GithubSlugger();
-    const regXHeader = /\n(?<flag>#+)\s+(?<content>.+)/g;
+    const regXHeader = /(?:^|\n)(?<flag>##+)\s+(?<content>.+)/g;
     const tableOfContents = Array.from(
       document.content.matchAll(regXHeader),
     ).map(({ groups }) => {
