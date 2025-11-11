@@ -8,7 +8,12 @@ import {
 } from "@content-collections/core";
 
 // Plugins:
+import remarkGfm from "remark-gfm";
+import rehypeShiki from "@shikijs/rehype/core";
 import { compileMDX } from "@content-collections/mdx";
+import { shikiHighlighter } from "./src/utils/shiki";
+import { rehypeShikiOptions } from "./src/mdx/rehypeShiki";
+import { getTableOfContents } from "./src/mdx/generateToC";
 
 // Schema:
 const docSchema = z.object({
@@ -23,9 +28,15 @@ type DocsDocument = Document & DocSchema;
 
 // Transform:
 const docTransform = async (document: DocsDocument, context: Context) => {
-  const mdx = await compileMDX(context, document);
+  const highlighter = await shikiHighlighter();
+  const tableOfContents = getTableOfContents(document.content);
+  const mdx = await compileMDX(context, document, {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypeShiki, highlighter, rehypeShikiOptions]],
+  });
   return {
     ...document,
+    tableOfContents,
     mdx,
   };
 };
