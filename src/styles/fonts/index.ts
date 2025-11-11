@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Geist_Mono } from "next/font/google";
+import { Geist_Mono, Instrument_Sans } from "next/font/google";
 
 const fontSans = localFont({
   variable: "--font-sans",
@@ -9,9 +9,14 @@ const fontSans = localFont({
   preload: true,
 });
 
+const fontHeadings = Instrument_Sans({
+  variable: "--font-headings",
+  subsets: ["latin"],
+});
+
 const fontMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
 });
 
-export { fontSans, fontMono };
+export { fontSans, fontHeadings, fontMono };
