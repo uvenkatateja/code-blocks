@@ -6,8 +6,8 @@ import {
 } from "shiki/core";
 
 // Themes:
-import githubLight from "@shikijs/themes/github-light";
-import githubDark from "@shikijs/themes/github-dark";
+import lightTheme from "@shikijs/themes/one-light";
+import darkTheme from "@shikijs/themes/one-dark-pro";
 
 // Languages:
 import js from "@shikijs/langs/js";
@@ -27,7 +27,7 @@ const getJsEngine = (): RegexEngine => {
 
 const shikiHighlighter = async (): Promise<HighlighterCore> => {
   highlighter ??= createHighlighterCore({
-    themes: [githubLight, githubDark],
+    themes: [lightTheme, darkTheme],
     langs: [bash, js, ts, tsx, css, markdown],
     engine: getJsEngine(),
   });
