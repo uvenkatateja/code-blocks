@@ -6,7 +6,7 @@ interface MDXProps {
 }
 
 const MDX = ({ code }: MDXProps) => {
-  return <MDXContent code={code} components={MDXCustomComponents} />;
+  return <MDXContent code={code} components={{ ...MDXCustomComponents }} />;
 };
 
 export default MDX;
