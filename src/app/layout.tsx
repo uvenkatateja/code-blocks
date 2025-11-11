@@ -6,7 +6,10 @@ import "@/styles/globals.css";
 import { cn } from "@/utils/cn";
 
 // Fonts:
-import { fontSans, fontMono } from "@/styles/fonts";
+import { fontSans, fontMono, fontHeadings } from "@/styles/fonts";
+
+// Providers:
+import { ThemeProvider } from "@/providers/themeProvider";
 
 // Metadata:
 export const metadata: Metadata = {
@@ -20,16 +23,24 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          `${fontSans.variable} ${fontMono.variable}`,
-          "bg-zinc-100 dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50",
+          `${fontSans.variable} ${fontHeadings.variable} ${fontMono.variable}`,
+          "bg-zinc-50 dark:bg-zinc-900",
+          "text-zinc-950 dark:text-zinc-50",
           "font-sans antialiased",
-          "overscroll-none"
+          "overscroll-none",
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
