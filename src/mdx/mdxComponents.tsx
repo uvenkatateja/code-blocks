@@ -2,15 +2,29 @@ import type { MDXComponents } from "mdx/types";
 import type { ComponentProps } from "react";
 
 import { reactToText } from "@/utils/react-to-text";
+
 import { CodeBlock } from "@/components/code-block/code-block";
-import { CodeBlockMDX } from "@/components/code-block/code-block-mdx";
+import { CopyContent } from "@/components/code-block/copy-content";
+import { CodeBlockHeader } from "@/components/code-block/code-block-header";
+import { CodeBlockContent } from "@/components/code-block/code-block-content";
+
+// Get data from Shiki transformers
+interface PreProps extends ComponentProps<"pre"> {
+  ["data-language"]: string;
+}
 
 const MDXCustomComponents: MDXComponents = {
-  pre: ({ children, ...props }: ComponentProps<"pre">) => {
+  pre: ({ children, ...props }: PreProps) => {
     const content = reactToText(children);
+    const language = props["data-language"];
     return (
       <CodeBlock>
-        <CodeBlockMDX {...props}>{children}</CodeBlockMDX>
+        <CodeBlockHeader language={language}>
+          <CopyContent content={content} />
+        </CodeBlockHeader>
+        <CodeBlockContent>
+          <pre {...props}>{children}</pre>
+        </CodeBlockContent>
       </CodeBlock>
     );
   },
