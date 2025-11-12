@@ -10,6 +10,8 @@ import { fontSans, fontMono, fontHeadings } from "@/styles/fonts";
 
 // Providers:
 import { ThemeProvider } from "@/providers/themeProvider";
+import SidebarAppContent from "@/components/layout/sidebarAppContent";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 // Metadata:
 export const metadata: Metadata = {
@@ -39,7 +41,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SidebarProvider>
+            <SidebarAppContent />
+            <main>
+              <SidebarTrigger />
+              {children}
+            </main>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
