@@ -8,6 +8,9 @@ import {
   wordWrapContent,
 } from "@/utils/shiki-transformers";
 
+// Shiki Core Transformers
+import { transformerMetaHighlight } from "@shikijs/transformers";
+
 const rehypeShikiOptions: RehypeShikiCoreOptions = {
   themes: {
     light: "one-light",
@@ -18,6 +21,9 @@ const rehypeShikiOptions: RehypeShikiCoreOptions = {
     wordWrapContent(),
     getCodeBlockTitle(),
     showLineNumbers(),
+    transformerMetaHighlight({
+      className: 'shiki-highlight'
+    }),
   ],
 };
 
