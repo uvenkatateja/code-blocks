@@ -2,9 +2,9 @@
 
 import { usePathname } from "next/navigation";
 
-import { SidebarLinkItem } from "@/components/docs-layout/sidebarItem";
-import { SidebarLinksData } from "@/components/docs-layout/sidebarLinksData";
-import SidebarGroup from "@/components/docs-layout/sidebarGroup";
+import { SidebarLinkItem } from "@/components/docs/sidebar-item";
+import { SidebarLinksData } from "@/components/docs/sidebar-data";
+import SidebarGroup from "@/components/docs/sidebar-group";
 
 const SidebarLinks = () => {
   const pathname = usePathname();

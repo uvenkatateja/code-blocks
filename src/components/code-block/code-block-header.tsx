@@ -21,6 +21,7 @@ const CodeBlockHeader = ({
   return (
     <div
       className={cn(
+        "not-markdown", // Disable Markdown Styles
         "flex items-center justify-between px-2 py-1.5",
         "text-sm text-zinc-600 dark:text-zinc-400",
         "bg-zinc-200/40 dark:bg-zinc-800/40",
@@ -28,11 +29,7 @@ const CodeBlockHeader = ({
       )}
     >
       <div className="flex items-center space-x-2">
-        {icon
-          ? icon
-          : LanguageIcon && (
-              <LanguageIcon className="size-4" />
-            )}
+        {icon ? icon : LanguageIcon && <LanguageIcon className="size-4" />}
         <p>{title ? title : LanguageData?.title}</p>
       </div>
       {children}
