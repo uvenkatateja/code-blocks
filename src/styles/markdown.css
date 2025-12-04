@@ -33,6 +33,13 @@
     @apply font-medium underline underline-offset-4 transition-opacity hover:opacity-80;
   }
 
+  /* h2-h4 with a inside */
+  & h2:not(.not-markdown h2) a,
+  & h3:not(.not-markdown h3) a,
+  & h4:not(.not-markdown h4) a {
+    @apply no-underline;
+  }
+
   /* Blockquotes */
 
   & blockquote:not(.not-markdown blockquote) {
