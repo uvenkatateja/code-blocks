@@ -6,6 +6,7 @@ import { reactToText } from "@/utils/react-to-text";
 
 // MDX Components
 import ShowSource from "@/components/show-source";
+import Showcase from "@/components/showcase";
 
 // Registry Components
 import { CodeBlock } from "@/components/code-block/code-block";
@@ -36,6 +37,7 @@ const MDXCustomComponents: MDXComponents = {
     );
   },
   ShowSource,
+  Showcase,
 };
 
 export { MDXCustomComponents };
