@@ -6,6 +6,7 @@ import { getDocument } from "@/utils/docs";
 
 import Article from "@/components/article";
 import Container from "@/components/container";
+import DocHeader from "@/components/docs/doc-header";
 import TableOfContents from "@/components/docs/toc-menu";
 
 interface DocsPageProps {
@@ -21,7 +22,8 @@ const DocsPage = async ({ params }: DocsPageProps) => {
   if (!data) return notFound();
   return (
     <>
-      <Container className="py-6 md:py-8">
+      <Container className="flex flex-col space-y-8 py-6 md:py-8">
+        <DocHeader title={data.title} description={data.description} />
         <Article>
           <MDX code={data.mdx} />
         </Article>
