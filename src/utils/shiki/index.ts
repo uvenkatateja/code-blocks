@@ -15,21 +15,21 @@ import ts from "@shikijs/langs/ts";
 import tsx from "@shikijs/langs/tsx";
 import css from "@shikijs/langs/css";
 import bash from "@shikijs/langs/bash";
-import markdown from "@shikijs/langs/markdown";
+import markdown from "@shikijs/langs/mdx";
 
 let jsEngine: RegexEngine | null = null;
 let highlighter: Promise<HighlighterCore> | null = null;
 
 // Set types for UI Components
 type Themes = "one-light" | "one-dark-pro";
-type Languages = "js" | "ts" | "tsx" | "css" | "bash" | "markdown";
+type Languages = "js" | "ts" | "tsx" | "css" | "bash" | "mdx";
 
 const getJsEngine = (): RegexEngine => {
   jsEngine ??= createJavaScriptRegexEngine();
   return jsEngine;
 };
 
-const shikiHighlighter = async (): Promise<HighlighterCore> => {
+const highlight = async (): Promise<HighlighterCore> => {
   highlighter ??= createHighlighterCore({
     themes: [lightTheme, darkTheme],
     langs: [bash, js, ts, tsx, css, markdown],
@@ -38,4 +38,4 @@ const shikiHighlighter = async (): Promise<HighlighterCore> => {
   return highlighter;
 };
 
-export { shikiHighlighter, type Themes, type Languages };
+export { highlight, type Themes, type Languages };
