@@ -14,7 +14,7 @@ import rehypeShiki from "@shikijs/rehype/core";
 import { compileMDX } from "@content-collections/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-import { shikiHighlighter } from "./src/utils/shiki";
+import { highlight } from "./src/utils/shiki";
 import { rehypeShikiOptions } from "./src/mdx/plugins/rehypeShiki";
 import { getTableOfContents } from "./src/mdx/plugins/generateToC";
 import { rehypeComponent } from "./src/mdx/plugins/rehypeComponent";
@@ -37,7 +37,7 @@ const docTransform = async (
   document: DocsDocument,
   context: Context,
 ) => {
-  const highlighter = await shikiHighlighter();
+  const highlighter = await highlight();
   const tableOfContents = getTableOfContents(document.content);
   const mdx = await compileMDX(context, document, {
     remarkPlugins: [remarkGfm],
