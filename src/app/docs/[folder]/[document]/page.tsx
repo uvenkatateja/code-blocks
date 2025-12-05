@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+
+import { globals } from "@/globals";
 import { notFound } from "next/navigation";
 
 import MDX from "@/mdx/mdx";
@@ -12,6 +15,21 @@ import TableOfContents from "@/components/docs/toc-menu";
 interface DocsPageProps {
   params: Promise<{ folder: string; document: string }>;
 }
+
+export async function generateMetadata(
+  { params }: DocsPageProps
+): Promise<Metadata> {
+  const { folder, document } = await params;
+  const data = getDocument({
+    folder,
+    document,
+  });
+  return {
+    title: `${data?.title} - ${globals.title}`,
+    description: data?.description
+  }
+}
+
 
 const DocsPage = async ({ params }: DocsPageProps) => {
   const { folder, document } = await params;
