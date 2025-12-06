@@ -1,7 +1,8 @@
 import {
-  ArrowDown01Icon,
   HighlighterIcon,
   HouseIcon,
+  ListIndentIncreaseIcon,
+  ListOrderedIcon,
   ListPlusIcon,
   TextQuoteIcon,
   TextWrapIcon,
@@ -46,7 +47,7 @@ export const SidebarLinksData: SidebarLinks[] = [
       },
       {
         title: "Line Numbers",
-        icon: ArrowDown01Icon,
+        icon: ListOrderedIcon,
         href: "/docs/shiki/line-numbers",
       },
       {
@@ -63,6 +64,11 @@ export const SidebarLinksData: SidebarLinks[] = [
         title: "Notation Diff",
         icon: ListPlusIcon,
         href: "/docs/shiki/notation-diff",
+      },
+      {
+        title: "Notation Focus",
+        icon: ListIndentIncreaseIcon,
+        href: "/docs/shiki/notation-focus",
       },
     ],
   },

@@ -10,6 +10,7 @@ import { wordWrapContent } from "@/utils/shiki/transformers/word-wrap";
 import {
   transformerMetaHighlight,
   transformerNotationDiff,
+  transformerNotationFocus,
 } from "@shikijs/transformers";
 
 const rehypeShikiOptions: RehypeShikiCoreOptions = {
@@ -23,6 +24,9 @@ const rehypeShikiOptions: RehypeShikiCoreOptions = {
     getCodeBlockTitle(),
     showLineNumbers(),
     transformerNotationDiff(),
+    transformerNotationFocus({
+      classActivePre: "shiki-has-focused",
+    }),
     transformerMetaHighlight({
       className: "shiki-line-highlight",
     }),

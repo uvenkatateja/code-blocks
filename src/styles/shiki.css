@@ -62,3 +62,12 @@ pre.has-diff span.line.diff.remove {
     @apply absolute left-2 text-red-600 dark:text-red-400;
   }
 }
+
+/* Shiki Notation Focus */
+pre.shiki-has-focused .line:not(.focused) {
+  @apply opacity-50 blur-[0.8px] transition-opacity duration-200 ease-in-out;
+}
+
+pre.shiki-has-focused:hover .line:not(.focused) {
+  @apply opacity-100 blur-none;
+}
