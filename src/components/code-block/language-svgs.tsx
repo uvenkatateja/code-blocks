@@ -1,36 +1,37 @@
-import type { JSX, SVGProps } from "react";
+import type { FC, SVGProps } from "react";
 import type { Languages } from "@/utils/shiki";
-
-import { ReactIcon } from "@/components/ui/svgs/react";
-import { TypeScriptIcon } from "@/components/ui/svgs/typescript";
-import { BashIcon } from "@/components/ui/svgs/bash";
-import { CSSIcon } from "@/components/ui/svgs/css";
+import { BracketsSky, Exe, Markdown, Reactts, TypeScript } from "@react-symbols/icons";
 
 interface LanguageSvgsType {
   title: string;
   language: Languages;
-  icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  icon: FC<SVGProps<SVGSVGElement>>;
 }
 
 export const LanguageSvgs: LanguageSvgsType[] = [
   {
     title: "React",
     language: "tsx",
-    icon: ReactIcon,
+    icon: Reactts,
   },
   {
     title: "TypeScript",
     language: "ts",
-    icon: TypeScriptIcon,
+    icon: TypeScript,
   },
   {
     title: "Bash",
     language: "bash",
-    icon: BashIcon,
+    icon: Exe,
   },
   {
     title: "CSS",
     language: "css",
-    icon: CSSIcon,
+    icon: BracketsSky,
+  },
+  {
+    title: "Markdown",
+    language: "mdx",
+    icon: Markdown,
   },
 ];
