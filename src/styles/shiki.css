@@ -30,7 +30,7 @@ pre.shiki-line-numbers code:has(.line:nth-child(2)) .line::before {
   margin-left: 0.3rem;
   display: inline-block;
   text-align: right;
-  @apply font-mono text-xs text-zinc-400 dark:text-zinc-600;
+  @apply font-mono text-xs text-neutral-400 dark:text-neutral-600;
 }
 
 /* Shiki Highlight */
@@ -38,7 +38,7 @@ pre span.shiki-line-highlight {
   @apply relative z-0 inline-block w-full;
   &::after {
     content: "";
-    @apply absolute top-0 left-0 -z-10 h-full w-full border-l-2 border-zinc-400 bg-zinc-600/20! opacity-40;
+    @apply absolute top-0 left-0 -z-10 h-full w-full border-l-2 border-neutral-400 bg-neutral-600/20! opacity-40;
   }
 }
 
