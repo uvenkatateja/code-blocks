@@ -29,8 +29,8 @@ const Sidebar = ({ children, position }: SidebarProps) => {
         "fixed h-full w-56",
         "hidden md:block",
         "overflow-x-hidden overflow-y-auto",
-        "border-zinc-200 dark:border-zinc-800",
-        "bg-zinc-100 dark:bg-zinc-900",
+        "border-neutral-200 dark:border-neutral-800",
+        "bg-neutral-100 dark:bg-neutral-900",
         position === "left" ? "left-0 border-r" : "right-0 border-l",
       )}
     >
