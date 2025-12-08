@@ -3,15 +3,15 @@
 import { useEffect, useState, type ComponentProps } from "react";
 
 import { cn } from "@/utils/cn";
-import { CheckIcon, CopyIcon } from "lucide-react";
 import { copyToClipboard } from "@/utils/copy";
+import { CheckIcon, CopyIcon } from "lucide-react";
 
-interface CopyContentProps extends ComponentProps<"button"> {
+interface CopyButtonProps extends ComponentProps<"button"> {
   content: string;
+  iconSize?: number;
 }
 
-const CopyContent = ({ content, ...props }: CopyContentProps) => {
-  const iconSize = 14;
+const CopyButton = ({ content, iconSize = 14, ...props }: CopyButtonProps) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,8 +34,8 @@ const CopyContent = ({ content, ...props }: CopyContentProps) => {
       className={cn(
         "cursor-pointer",
         "transition-colors duration-200 ease-in-out",
-        "text-zinc-600 dark:text-zinc-400",
-        "hover:text-zinc-950 hover:dark:text-zinc-50",
+        "text-neutral-600 dark:text-neutral-400",
+        "hover:text-neutral-950 hover:dark:text-neutral-50",
         props.className,
       )}
       onClick={handleCopy}
@@ -44,13 +44,16 @@ const CopyContent = ({ content, ...props }: CopyContentProps) => {
       {isCopied ? (
         <CheckIcon
           size={iconSize}
-          className="text-green-900 dark:text-green-400"
+          className="animate-in zoom-in-50 text-green-900 duration-200 dark:text-green-400"
         />
       ) : (
-        <CopyIcon size={iconSize} />
+        <CopyIcon
+          size={iconSize}
+          className="animate-in zoom-in-50 duration-200"
+        />
       )}
     </button>
   );
 };
 
-export { CopyContent };
+export { CopyButton };
