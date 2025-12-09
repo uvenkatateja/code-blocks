@@ -1,8 +1,10 @@
 import type { RehypeShikiCoreOptions } from "@shikijs/rehype/core";
 
 // Shiki custom transformers
-import { getShikiLanguage } from "@/utils/shiki/transformers/get-language";
-import { getCodeBlockTitle } from "@/utils/shiki/transformers/get-title";
+import {
+  addTitleProperty,
+  addLanguageProperty,
+} from "@/utils/shiki/transformers/add-to-pre-element";
 import { showLineNumbers } from "@/utils/shiki/transformers/show-line-numbers";
 import { wordWrapContent } from "@/utils/shiki/transformers/word-wrap";
 
@@ -19,9 +21,9 @@ const rehypeShikiOptions: RehypeShikiCoreOptions = {
     dark: "one-dark-pro",
   },
   transformers: [
-    getShikiLanguage(),
+    addTitleProperty(),
+    addLanguageProperty(),
     wordWrapContent(),
-    getCodeBlockTitle(),
     showLineNumbers(),
     transformerNotationDiff(),
     transformerNotationFocus({
