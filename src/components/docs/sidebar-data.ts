@@ -1,9 +1,13 @@
 import {
+  ClipboardIcon,
+  FileCodeCornerIcon,
   HighlighterIcon,
   HouseIcon,
   ListIndentIncreaseIcon,
   ListOrderedIcon,
   ListPlusIcon,
+  SquareCodeIcon,
+  SquareDashedIcon,
   TextQuoteIcon,
   TextWrapIcon,
   WrenchIcon,
@@ -28,12 +32,37 @@ export const SidebarLinksData: SidebarLinks[] = [
       {
         title: "Introduction",
         icon: HouseIcon,
-        href: "/docs/getting-started/introduction",
+        href: "/",
       },
       {
         title: "Prerequisites",
         icon: WrenchIcon,
         href: "/docs/getting-started/prerequisites",
+      },
+    ],
+  },
+  {
+    groupTitle: "Components",
+    items: [
+      {
+        title: "Copy Button",
+        icon: ClipboardIcon,
+        href: "/docs/components/copy-button",
+      },
+      {
+        title: "Code Block",
+        icon: SquareDashedIcon,
+        href: "/docs/components/code-block",
+      },
+      {
+        title: "Code Block MDX",
+        icon: FileCodeCornerIcon,
+        href: "/docs/components/code-block-mdx",
+      },
+      {
+        title: "Code Block Client",
+        icon: SquareCodeIcon,
+        href: "/docs/components/code-block-client",
       },
     ],
   },

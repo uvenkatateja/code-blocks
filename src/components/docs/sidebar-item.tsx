@@ -18,11 +18,11 @@ const SidebarLinkItem = ({ isActive, ...props }: SidebarLinkItemProps) => {
       href={props.href}
       className={cn(
         "flex items-center space-x-2.5 rounded-md px-2 py-1.5 text-sm",
-        "text-zinc-600 dark:text-zinc-400",
-        "hover:bg-zinc-200/40 dark:hover:bg-zinc-800/40",
-        "hover:text-zinc-950 dark:hover:text-zinc-50",
+        "text-neutral-600 dark:text-neutral-400",
+        "hover:bg-neutral-200/40 dark:hover:bg-neutral-800/40",
+        "hover:text-neutral-950 dark:hover:text-neutral-50",
         isActive &&
-          "bg-zinc-200/60 font-medium text-zinc-950 dark:bg-zinc-800/60 dark:text-zinc-50",
+          "bg-neutral-200/60 font-medium text-neutral-950 dark:bg-neutral-800/60 dark:text-neutral-50",
       )}
     >
       {props.children}

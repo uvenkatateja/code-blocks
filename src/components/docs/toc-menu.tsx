@@ -47,7 +47,7 @@ const TableOfContents = ({ data }: TableOfContentsProps) => {
 
   return (
     <div className="px-7 py-6">
-      <div className="mb-2 flex items-center space-x-2.5 text-zinc-600 dark:text-zinc-400">
+      <div className="mb-2 flex items-center space-x-2.5 text-neutral-600 dark:text-neutral-400">
         <TextAlignStartIcon size={16} />
         <h2 className="text-sm font-semibold">On this page</h2>
       </div>
@@ -63,8 +63,8 @@ const TableOfContents = ({ data }: TableOfContentsProps) => {
                 "border-l",
                 item.level === 2 && "py-1",
                 activeId === item.slug
-                  ? "border-zinc-200 font-medium text-zinc-900 dark:border-zinc-400 dark:text-zinc-100"
-                  : "border-zinc-300 text-zinc-600 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-100",
+                  ? "border-neutral-200 font-medium text-neutral-900 dark:border-neutral-400 dark:text-neutral-100"
+                  : "border-neutral-300 text-neutral-600 hover:text-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-100",
               )}
             >
               <span className="pl-3">{item.text}</span>
