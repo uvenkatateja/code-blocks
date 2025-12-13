@@ -110,6 +110,19 @@ const UIComponents: RegistryComponent[] = [
     },
   },
   {
+    title: "code-block-client",
+    fileType: "tsx",
+    mainSourceFile: `${codeblockComponent}/code-block-client.tsx`,
+    shadcnRegistry: {
+      mainType: "registry:component",
+      dependencies: ["shiki"],
+    },
+    exampleSourceFile: `${componentsFolder}/previews/code-block-client-example.tsx`,
+    reactComponent: lazy(
+      () => import("@/components/previews/code-block-client-example"),
+    ),
+  },
+  {
     title: "copy-button",
     fileType: "tsx",
     mainSourceFile: `${codeblockComponent}/copy-button.tsx`,
