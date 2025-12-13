@@ -9,20 +9,49 @@ category: Shiki
 1. Install the following dependencies:
 
 ```bash title="Shiki Dependencies"
+npm install shiki -D
+```
+
+As optional, you can also install separate packages for themes and languages to reduce the bundle size:
+
+```bash title="Shiki Themes and Languages"
 npm install @shikijs/themes @shikijs/langs -D
 ```
 
 2. Create a `src/utils/shiki-highlighter.ts` file and add the following code:
 
-For better performance, this utility only imports the languages and themes that you will use in the application.
-
 <ShowSource component="shiki-highlighter" />
+
+For better performance, this utility only imports the languages and themes that you will use in the application. If you don't need to limit the imports, you can import themes and languages from `shiki` directly:
+
+```ts {3,4}
+const highlight = async (): Promise<HighlighterCore> => {
+  highlighter ??= createHighlighterCore({
+    themes: ["one-light", "one-dark-pro"],
+    langs: ["javascript"],
+    engine: getJsEngine(),
+  });
+  return highlighter;
+};
+```
 
 This utility exports:
 
 - `highlight()`: A function that initializes and returns a Shiki highlighter instance with the specified theme and languages.
 - `Themes`: A type with the available themes. You can use it in your UI components to type the `theme` prop.
 - `Languages`: A type with the available languages. You can use it in your UI components to type the `language` prop.
+
+## Light/Dark Mode
+
+To active light/dark mode styles for Shiki code blocks, add the following CSS to your global styles:
+
+```css
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  font-family: var(--font-mono) !important;
+}
+```
 
 ## Usage
 
@@ -79,4 +108,41 @@ import tsx from "@shikijs/langs/tsx";
 
 ```ts
 type Languages = "js" | "ts" | "tsx" | ... ;
+```
+
+## MDX Integration
+
+1. Install the `@shikijs/rehype` package:
+
+```bash
+npm install @shikijs/rehype -D
+```
+
+2. Create a `rehypeShikiOptions` utility to configure the MDX plugin:
+
+```tsx
+import type { RehypeShikiCoreOptions } from "@shikijs/rehype/core";
+
+const rehypeShikiOptions: RehypeShikiCoreOptions = {
+  themes: {
+    light: "one-light",
+    dark: "one-dark-pro",
+  },
+};
+
+export { rehypeShikiOptions };
+```
+
+3. Use the `highlight` and `rehypeShikiOptions` in your MDX setup as Rehype plugin:
+
+```ts {8}
+import rehypeShiki from "@shikijs/rehype/core";
+import { highlight } from "@/utils/shiki-highlighter";
+import { rehypeShikiOptions } from "@/utils/rehype-shiki-options";
+
+const highlighter = await highlight();
+
+const mdx = await compileMDX(context, document, {
+  rehypePlugins: [[rehypeShiki, highlighter, rehypeShikiOptions]],
+});
 ```
