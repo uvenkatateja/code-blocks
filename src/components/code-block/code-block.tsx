@@ -19,8 +19,8 @@ const CodeBlock = ({
     <div
       className={cn(
         "not-prose",
-        "flex w-full flex-col overflow-clip rounded-lg",
-        "bg-neutral-200 dark:bg-neutral-900",
+        "flex w-full flex-col overflow-clip rounded-lg shadow-xs",
+        "bg-neutral-200/40 dark:bg-neutral-800/70",
         "border border-neutral-300/60 dark:border-neutral-700/60",
         "text-neutral-950 dark:text-neutral-50",
         className,
@@ -46,8 +46,6 @@ const CodeBlockHeader = ({
         "not-prose", // Disable Markdown Styles
         "flex items-center justify-between px-2 py-1.5",
         "text-sm text-neutral-600 dark:text-neutral-400",
-        "bg-neutral-200/40 dark:bg-neutral-800/40",
-        "border-b border-neutral-200 dark:border-neutral-800",
       )}
     >
       <div className="flex items-center space-x-2">

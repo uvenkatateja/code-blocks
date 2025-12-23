@@ -3,18 +3,16 @@
 import { useEffect, useState, type ComponentProps } from "react";
 
 import { cn } from "@/utils/cn";
-import { highlight, type Languages, type Themes } from "@/utils/shiki";
+import { highlight, Themes, type Languages } from "@/utils/shiki";
 
 interface CodeBlockClientProps extends ComponentProps<"div"> {
   code: string;
   language?: Languages;
-  theme?: Themes;
 }
 
 const CodeBlockClient = ({
   code,
   language = "tsx",
-  theme = "one-dark-pro",
   className,
   ...props
 }: CodeBlockClientProps) => {
@@ -27,19 +25,19 @@ const CodeBlockClient = ({
         return;
       }
       const highlighter = await highlight();
-      const html = await highlighter.codeToHtml(code, {
+      const html = highlighter.codeToHtml(code, {
         lang: language,
-        theme,
+        themes: {
+          light: Themes.light,
+          dark: Themes.dark,
+        },
       });
       setHighlightedHtml(html);
     }
     clientHighlight();
-  }, [code, language, theme]);
+  }, [code, language]);
 
-  const classNames = cn(
-    "w-full overflow-x-auto text-[13px] [&>pre]:px-4 [&>pre]:py-4",
-    className,
-  );
+  const classNames = cn("w-full overflow-x-auto", className);
 
   // SSR fallback
   return highlightedHtml ? (
