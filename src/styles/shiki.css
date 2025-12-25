@@ -2,10 +2,17 @@
 @import "./globals.css";
 
 /* Shiki */
+html.light .shiki,
+html.light .shiki span {
+  font-family: var(--font-mono) !important;
+  background-color: transparent !important;
+}
+
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
   font-family: var(--font-mono) !important;
+  background-color: transparent !important;
 }
 
 pre.shiki {
