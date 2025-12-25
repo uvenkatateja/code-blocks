@@ -110,9 +110,9 @@ const UIComponents: RegistryComponent[] = [
     },
   },
   {
-    title: "code-block-client",
+    title: "code-block-client-shiki",
     fileType: "tsx",
-    mainSourceFile: `${codeblockComponent}/code-block-client.tsx`,
+    mainSourceFile: `${codeblockComponent}/client/shiki.tsx`,
     shadcnRegistry: {
       mainType: "registry:component",
       dependencies: ["shiki"],

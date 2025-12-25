@@ -5,17 +5,17 @@ import { useEffect, useState, type ComponentProps } from "react";
 import { cn } from "@/utils/cn";
 import { highlight, Themes, type Languages } from "@/utils/shiki";
 
-interface CodeBlockClientProps extends ComponentProps<"div"> {
+interface CodeblockClientShikiProps extends ComponentProps<"div"> {
   code: string;
   language?: Languages;
 }
 
-const CodeBlockClient = ({
+const CodeblockClientShiki = ({
   code,
   language = "tsx",
   className,
   ...props
-}: CodeBlockClientProps) => {
+}: CodeblockClientShikiProps) => {
   const [highlightedHtml, setHighlightedHtml] = useState<string | null>(null);
 
   useEffect(() => {
@@ -55,4 +55,4 @@ const CodeBlockClient = ({
   );
 };
 
-export { CodeBlockClient };
+export { CodeblockClientShiki };

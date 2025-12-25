@@ -4,7 +4,7 @@ description: How to create a custom code block client component with Shiki for s
 category: UI
 ---
 
-<ComponentPreview component="code-block-client" />
+<ComponentPreview component="code-block-client-shiki" />
 
 ## Installation
 
@@ -18,11 +18,11 @@ Before creating the component, make sure you have the basic structure:
 
 2. Create the Code Block Client component:
 
-<ShowSource component="code-block-client" />
+<ShowSource component="code-block-client-shiki" />
 
 ## Usage
 
-Now you can use the `CodeBlockClient` into your ``CodeBlockContent`` component:
+Now you can use the `CodeblockClientShiki` into your ``CodeBlockContent`` component:
 
 ```tsx {6,11}
 import {
@@ -30,18 +30,18 @@ import {
   CodeBlockContent,
   CodeBlockHeader,
 } from "@/components/code-block";
-import { CodeBlockClient } from "@/components/code-block/code-block-client";
+import { CodeblockClientShiki } from "@/components/code-block/client/shiki";
 
 <CodeBlock>
   <CodeBlockHeader language="ts" title="Code block rendered on client side" />
   <CodeBlockContent>
-    <CodeBlockClient language="ts" code="console.log('Hello, world!');" />
+    <CodeblockClientShiki language="ts" code="console.log('Hello, world!');" />
   </CodeBlockContent>
 </CodeBlock>;
 ```
 
 ## Props
 
-<ShowProps component="code-block-client" />
+<ShowProps component="code-block-client-shiki" />
 
 > `Languages` type is from the [`shiki` utility](/docs/shiki/highlighter#languages).

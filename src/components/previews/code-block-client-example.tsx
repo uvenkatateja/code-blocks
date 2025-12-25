@@ -4,14 +4,20 @@ import {
   CodeBlockHeader,
 } from "@/components/code-block/code-block";
 
-import { CodeBlockClient } from "@/components/code-block/code-block-client";
+import { CodeblockClientShiki } from "@/components/code-block/client/shiki";
 
 const CodeBlockClientExample = () => {
   return (
     <CodeBlock>
-      <CodeBlockHeader language="ts" title="Code block rendered on client side" />
+      <CodeBlockHeader
+        language="ts"
+        title="Code block rendered on client side"
+      />
       <CodeBlockContent>
-        <CodeBlockClient language="ts" code="console.log('Hello, world!');" />
+        <CodeblockClientShiki
+          language="ts"
+          code="console.log('Hello, world!');"
+        />
       </CodeBlockContent>
     </CodeBlock>
   );
