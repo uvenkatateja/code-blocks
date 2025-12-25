@@ -21,8 +21,12 @@ import markdown from "@shikijs/langs/mdx";
 let jsEngine: RegexEngine | null = null;
 let highlighter: Promise<HighlighterCore> | null = null;
 
-// Set types for UI Components
-type Themes = "one-light" | "one-dark-pro";
+// Settings for UI components
+const Themes = {
+  light: "one-light",
+  dark: "one-dark-pro",
+};
+
 type Languages = "html" | "js" | "ts" | "tsx" | "css" | "bash" | "mdx";
 
 const getJsEngine = (): RegexEngine => {
@@ -39,4 +43,4 @@ const highlight = async (): Promise<HighlighterCore> => {
   return highlighter;
 };
 
-export { highlight, type Themes, type Languages };
+export { highlight, Themes, type Languages };
