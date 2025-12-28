@@ -4,6 +4,8 @@ description: The main highlighter utility to render syntax highlighted code.
 category: Shiki
 ---
 
+[Shiki](https://shiki.style/) is a syntax highlighting library based on TextMate grammars. It transforms source code into accurate, theme-aware HTML, matching the highlighting used in VS Code.
+
 ## Installation
 
 1. Install the following dependencies:
@@ -22,7 +24,7 @@ As optional, you can also install separate packages for themes and languages to 
   command="@shikijs/themes @shikijs/langs -D"
 />
 
-2. Create a `src/utils/shiki-highlighter.ts` file and add the following code:
+2. Create a your shiki utility file:
 
 <ShowSource component="shiki-highlighter" />
 
@@ -120,13 +122,15 @@ import tsx from "@shikijs/langs/tsx";
 type Languages = "js" | "ts" | "tsx" | ... ;
 ```
 
-## MDX Integration
+## Markdown/MDX Integration
 
-1. Install the `@shikijs/rehype` package:
+1. Install the [`@shikijs/rehype`](https://shiki.style/packages/rehype) package:
 
-```bash
-npm install @shikijs/rehype -D
-```
+<CopyWithPkgManager
+  title="Shiki Rehype Dependency"
+  type="install"
+  command="@shikijs/rehype -D"
+/>
 
 2. Create a `rehypeShikiOptions` utility to configure the MDX plugin:
 
