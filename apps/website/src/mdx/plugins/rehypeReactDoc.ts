@@ -14,7 +14,7 @@ const getComponent = (title: string): RegistryComponent | undefined => {
 };
 
 export function rehypeReactDoc() {
-  return async (tree: UnistTree) => {
+  return (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {
       if (node.name === "ShowProps") {
         const title = getNodeAttributeByName(node, "component")
@@ -41,12 +41,12 @@ export function rehypeReactDoc() {
             return;
           }
 
-          type PropType = {
+          interface PropType {
             name: string;
             type: { name: string };
             required: boolean;
             description?: string;
-          };
+          }
 
           const fullPropAttr = getNodeAttributeByName(node, "fullprop");
           const fullProp =

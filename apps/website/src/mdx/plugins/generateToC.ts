@@ -1,11 +1,11 @@
 import GithubSlugger from "github-slugger";
 
-type ToCItem = {
+interface ToCItem {
   id: number;
   level: number;
   text: string;
   slug: string;
-};
+}
 
 const getTableOfContents = (markdown: string): ToCItem[] => {
   const slugger = new GithubSlugger();

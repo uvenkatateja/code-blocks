@@ -14,13 +14,9 @@ const getComponent = (title: string): RegistryComponent | undefined => {
 };
 
 export function rehypeComponent() {
-  return async (tree: UnistTree) => {
+  return (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {
       if (node.name === "ComponentPreview") {
-        if (!node.name) {
-          return null;
-        }
-
         const title = getNodeAttributeByName(node, "component")
           ?.value as string;
 
@@ -84,10 +80,6 @@ export function rehypeComponent() {
       }
 
       if (node.name === "ShowSource") {
-        if (!node.name) {
-          return null;
-        }
-
         const title = getNodeAttributeByName(node, "component")
           ?.value as string;
 
