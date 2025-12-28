@@ -41,7 +41,7 @@ const docTransform = async (
 ) => {
   const highlighter = await highlight();
   const tableOfContents = getTableOfContents(document.content);
-  const mdx = await compileMDX(context, document, {
+  const code = await compileMDX(context, document, {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeComponent,
@@ -63,7 +63,7 @@ const docTransform = async (
     ...document,
     folder,
     tableOfContents,
-    mdx,
+    mdx: code,
   };
 };
 
@@ -103,5 +103,6 @@ const shikiDocs = defineCollection({
 });
 
 export default defineConfig({
+  //@ts-expect-error Content Collections types issue
   collections: [generalDocs, gstartedDocs, componentsDocs, shikiDocs],
 });
