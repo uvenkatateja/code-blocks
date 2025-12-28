@@ -8,15 +8,19 @@ category: Shiki
 
 1. Install the following dependencies:
 
-```bash title="Shiki Dependencies"
-npm install shiki -D
-```
+<CopyWithPkgManager
+  title="Shiki Dependencies"
+  type="install"
+  command="shiki -D"
+/>
 
 As optional, you can also install separate packages for themes and languages to reduce the bundle size:
 
-```bash title="Shiki Themes and Languages"
-npm install @shikijs/themes @shikijs/langs -D
-```
+<CopyWithPkgManager
+  title="Shiki Themes and Languages"
+  type="install"
+  command="@shikijs/themes @shikijs/langs -D"
+/>
 
 2. Create a `src/utils/shiki-highlighter.ts` file and add the following code:
 

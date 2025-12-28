@@ -9,7 +9,8 @@ import ComponentPreview from "@/components/docs/component-preview";
 // MDX Components:
 import { AMDXComponent } from "@/components/mdx/a-component";
 import { PreShikiComponent } from "@/components/code-block/mdx/pre-shiki";
-import { TabsContent } from "../ui/tabs";
+import { TabsContent } from "@/components/ui/tabs";
+import CopyWithPkgManager from "@/components/blocks/copy-with-pkg-manager";
 
 // Homepage:
 import Hero from "@/components/hero";
@@ -29,6 +30,8 @@ const MDXCustomComponents: MDXComponents = {
   // MDX CodeBlock Source Tabs:
   MDXCodeBlockSource,
   TabsContent,
+  // Blocks:
+  CopyWithPkgManager,
   DocCard,
   ShowProps,
   ShowSource,
