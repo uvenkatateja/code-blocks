@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 // Styles:
 import "@/styles/globals.css";
 import "@/styles/shiki.css";
+import "@/styles/sugar-high.css";
 
 import { cn } from "@/utils/cn";
 import { fontSans, fontMono, fontHeadings } from "@/styles/fonts";
