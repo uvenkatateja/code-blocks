@@ -10,7 +10,7 @@ interface CodeblockClientShikiProps extends ComponentProps<"div"> {
   language?: Languages;
 }
 
-const CodeblockClientShiki = ({
+const CodeblockShiki = ({
   code,
   language = "tsx",
   className,
@@ -55,4 +55,4 @@ const CodeblockClientShiki = ({
   );
 };
 
-export { CodeblockClientShiki };
+export { CodeblockShiki };

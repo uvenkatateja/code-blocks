@@ -4,7 +4,6 @@ import { lazy } from "react";
 // Settings:
 const utilsFolder = "src/utils";
 const componentsFolder = "src/components";
-const mdxComponents = "src/components/mdx/components";
 const codeblockComponent = "src/components/code-block";
 
 // Utils:
@@ -101,12 +100,19 @@ const UIComponents: RegistryComponent[] = [
     ),
   },
   {
-    title: "code-block-mdx",
+    title: "code-block-mdx-shiki",
     fileType: "tsx",
-    mainSourceFile: `${mdxComponents}/pre-component.tsx`,
+    mainSourceFile: `${codeblockComponent}/mdx/pre-shiki.tsx`,
     shadcnRegistry: {
       mainType: "registry:component",
-      dependencies: ["lucide-react"],
+    },
+  },
+  {
+    title: "code-block-mdx-sugar-high",
+    fileType: "tsx",
+    mainSourceFile: `${codeblockComponent}/mdx/pre-sugar-high.tsx`,
+    shadcnRegistry: {
+      mainType: "registry:component",
     },
   },
   {
@@ -117,9 +123,22 @@ const UIComponents: RegistryComponent[] = [
       mainType: "registry:component",
       dependencies: ["shiki"],
     },
-    exampleSourceFile: `${componentsFolder}/previews/code-block-client-example.tsx`,
+    exampleSourceFile: `${componentsFolder}/previews/code-block-shiki-example.tsx`,
     reactComponent: lazy(
-      () => import("@/components/previews/code-block-client-example"),
+      () => import("@/components/previews/code-block-shiki-example"),
+    ),
+  },
+  {
+    title: "code-block-client-sugar-high",
+    fileType: "tsx",
+    mainSourceFile: `${codeblockComponent}/client/sugar-high.tsx`,
+    shadcnRegistry: {
+      mainType: "registry:component",
+      dependencies: ["sugar-high"],
+    },
+    exampleSourceFile: `${componentsFolder}/previews/code-block-sugar-high-example.tsx`,
+    reactComponent: lazy(
+      () => import("@/components/previews/code-block-sugar-high-example"),
     ),
   },
   {

@@ -15,7 +15,7 @@ interface PreProps extends ComponentProps<"pre"> {
   ["data-title"]?: string;
 }
 
-const PreMDXComponent: MDXComponents = {
+const PreShikiComponent: MDXComponents = {
   pre: ({ children, ...props }: PreProps) => {
     const content = reactToText(children);
     const title = props["data-title"];
@@ -33,4 +33,4 @@ const PreMDXComponent: MDXComponents = {
   },
 };
 
-export { PreMDXComponent };
+export { PreShikiComponent };

@@ -6,13 +6,17 @@ import ShowProps from "@/components/docs/show-props";
 import ShowSource from "@/components/docs/show-source";
 import ComponentPreview from "@/components/docs/component-preview";
 
-// HTML Components:
-import { AMDXComponent } from "@/components/mdx/components/a-component";
-import { PreMDXComponent } from "@/components/mdx/components/pre-component";
+// MDX Components:
+import { AMDXComponent } from "@/components/mdx/a-component";
+import { PreShikiComponent } from "@/components/code-block/mdx/pre-shiki";
+import { TabsContent } from "../ui/tabs";
 
 // Homepage:
 import Hero from "@/components/hero";
 import Features from "@/components/features";
+
+// Tabs Source:
+import MDXCodeBlockSource from "@/components/docs/mdx-code-block-source";
 
 // From Registry:
 import { CopyButton } from "@/components/code-block/copy-button";
@@ -20,8 +24,11 @@ import { CopyButton } from "@/components/code-block/copy-button";
 const MDXCustomComponents: MDXComponents = {
   // <a>:
   ...AMDXComponent,
-  // <pre>:
-  ...PreMDXComponent,
+  // <pre> Shiki:
+  ...PreShikiComponent,
+  // MDX CodeBlock Source Tabs:
+  MDXCodeBlockSource,
+  TabsContent,
   DocCard,
   ShowProps,
   ShowSource,
@@ -29,7 +36,7 @@ const MDXCustomComponents: MDXComponents = {
   CopyButton,
   ComponentPreview,
   Hero,
-  Features
+  Features,
 };
 
 export { MDXCustomComponents };
