@@ -1,64 +1,64 @@
-import type { ReactNode } from "react";
-import { SparkleCard } from "./ui/sparkleCard";
+import Link from "next/link";
+import { ArrowUpRightIcon, ChevronRightIcon } from "lucide-react";
 
-import { Reactjs, Tailwind } from "@react-symbols/icons";
-import ExternalLink from "./ui/externalLink";
-import { buttonVariants } from "./ui/button";
-import { Shiki } from "./ui/icons";
+import { cn } from "@/utils/cn";
+import { globals } from "@/globals";
 
-interface HeroProps {
-  children: ReactNode;
-}
+import { GitHub } from "@/components/ui/svgs/github";
+import { buttonVariants } from "@/components/ui/button";
+import { ExternalLink } from "@/components/ui/external-link";
 
-const technologies = [
-  {
-    name: "Shiki",
-    icon: <Shiki width={25} height={25} aria-label="Shiki" />,
-    url: "https://shiki.style/",
-  },
-  {
-    name: "React",
-    icon: <Reactjs width={32} height={32} aria-label="React" />,
-    url: "https://react.dev/",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: <Tailwind width={32} height={32} aria-label="Tailwind CSS" />,
-    url: "https://tailwindcss.com/",
-  },
-];
-
-const Hero = (props: HeroProps) => {
+const Hero = () => {
   return (
-    <SparkleCard
-      className="not-prose"
-      sparklePositions={["top-left", "bottom-right"]}
+    <div
+      className={cn(
+        "not-prose",
+        "flex flex-col space-y-4 pt-10 pb-6 md:pt-12 md:pb-10",
+      )}
     >
-      <div className="flex flex-col space-y-0.5">
-        <h2 className="font-headings text-black dark:text-white text-3xl font-semibold tracking-tight">
-          Codeblocks
-        </h2>
-        <p className="text-lg tracking-tighter text-neutral-600 dark:text-neutral-400">
-          A beautifully code block component for React & MDX.
+      <div className="flex flex-col items-center justify-center space-y-2">
+        <h1 className="font-headings text-dark text-4xl font-semibold tracking-tight lg:text-5xl dark:text-white">
+          Build beautiful code blocks
+        </h1>
+        <p className="font-medium text-neutral-500 dark:text-neutral-400">
+          Show code snippets with syntax highlighting in your React project.
         </p>
       </div>
-      <div className="my-3 flex items-center justify-start space-x-0.5">
-        {technologies.map((tech) => (
-          <ExternalLink
-            key={tech.name}
-            title={tech.name}
-            href={tech.url}
-            className={buttonVariants({
-              variant: "ghost",
-              size: "icon",
-            })}
-          >
-            {tech.icon}
-          </ExternalLink>
-        ))}
+      <div
+        className={cn(
+          "flex flex-col items-center justify-center space-y-2 md:flex-row md:space-y-0 md:space-x-2",
+        )}
+      >
+        <Link
+          href="/docs/getting-started/prerequisites"
+          className={buttonVariants({
+            size: "default",
+            className: "group w-full md:w-auto",
+          })}
+        >
+          <span>Get Started</span>
+          <ChevronRightIcon
+            size={16}
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </Link>
+        <ExternalLink
+          title="View on GitHub"
+          href={globals.githubUrl}
+          className={buttonVariants({
+            size: "default",
+            variant: "outline",
+            className: "w-full no-underline md:w-44",
+          })}
+        >
+          <div className="flex items-center space-x-2">
+            <GitHub height={14} />
+            <span>View on GitHub</span>
+          </div>
+          <ArrowUpRightIcon size={12} />
+        </ExternalLink>
       </div>
-      <div>{props.children}</div>
-    </SparkleCard>
+    </div>
   );
 };
 

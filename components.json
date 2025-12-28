@@ -3,19 +3,24 @@
   "style": "new-york",
   "rsc": true,
   "tsx": true,
-  "iconLibrary": "lucide",
   "tailwind": {
-    "config": "tailwind.config.ts",
-    "css": "styles/globals.css",
+    "config": "",
+    "css": "src/styles/globals.css",
     "baseColor": "neutral",
     "cssVariables": false,
     "prefix": ""
   },
+  "iconLibrary": "lucide",
   "aliases": {
     "components": "@/components",
     "utils": "@/utils",
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
+  },
+  "registries": {
+    "@magicui": "https://magicui.design/r/{name}.json",
+    "@tailark": "https://tailark.com/r/{name}.json",
+    "@svgl": "https://svgl.app/r/{name}.json"
   }
 }

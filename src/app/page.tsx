@@ -1,41 +1,30 @@
-import type { Metadata } from "next";
-
-import { allDocs } from "content-collections";
+import { getDocument } from "@/utils/docs";
 import { notFound } from "next/navigation";
-import { MDX } from "@/mdx/mdx";
-import Article from "@/components/article";
-import ToC from "@/components/layout/toc";
 
-const indexPage = "index";
+import MDX from "@/components/mdx";
+import Article from "@/components/docs/doc-article";
+import Container from "@/components/container";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const document = allDocs.find((post) => post.slug === indexPage);
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
-  if (!document) {
-    return notFound();
-  }
-
-  return {
-    title: `${document.title} - @pheralb/codeblocks`,
-    description: document.description,
-  };
-}
-
-const Page = () => {
-  const document = allDocs.find((post) => post.slug === indexPage);
-
-  if (!document) {
-    return notFound();
-  }
-
+const Home = () => {
+  const document = getDocument({
+    folder: "general",
+    document: "home",
+  });
+  if (!document) return notFound();
   return (
     <>
-      <Article>
+    <Container>
+      <Header layout="app" />
+      <Article className="pb-12">
         <MDX code={document.mdx} />
       </Article>
-      <ToC tocData={document.toc} />
+    </Container>
+    <Footer />
     </>
   );
 };
 
-export default Page;
+export default Home;

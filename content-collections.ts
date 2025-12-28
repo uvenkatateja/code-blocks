@@ -1,110 +1,107 @@
-import { defineCollection, defineConfig } from "@content-collections/core";
-import { compileMDX } from "@content-collections/mdx";
-import path from "node:path";
-import fs from "node:fs/promises";
+import { z } from "zod";
 
-// MDX Plugins:
 import {
-  remarkGfm,
-  remarkHeading,
-  remarkStructure,
-} from "fumadocs-core/mdx-plugins";
-import GithubSlugger from "github-slugger";
+  defineCollection,
+  defineConfig,
+  type Context,
+  type Document,
+} from "@content-collections/core";
+
+// Plugins:
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeShiki from "@shikijs/rehype/core";
+
+import { compileMDX } from "@content-collections/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { visit } from "unist-util-visit";
-import rehypeShiki, { type RehypeShikiOptions } from "@shikijs/rehype";
-import { rehypeComponent } from "./src/mdx/rehypeComponent";
 
-// Domain:
-const domain = "codeblocks.pheralb.dev";
+import { highlight } from "./src/utils/shiki";
+import { rehypeShikiOptions } from "./src/mdx/plugins/rehypeShiki";
+import { getTableOfContents } from "./src/mdx/plugins/generateToC";
+import { rehypeComponent } from "./src/mdx/plugins/rehypeComponent";
+import { rehypeReactDoc } from "./src/mdx/plugins/rehypeReactDoc";
+import { HEADING_LINK_ANCHOR } from "./src/components/ui/headings";
 
-// Shiki Options:
-const shikiOptions: RehypeShikiOptions = {
-  themes: {
-    light: "github-light",
-    dark: "github-dark",
-  },
-  transformers: [
-    {
-      name: "AddPreProperties",
-      pre(node) {
-        node.properties["data-language"] = this.options.lang || "plaintext";
-        node.properties["data-code"] = this.source;
-      },
-    },
-    {
-      name: "WordWrap",
-      pre(node) {
-        node.properties["style"] = "white-space: pre-wrap;";
-      },
-    },
-  ],
+// Schema:
+const docSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  category: z.string(),
+  content: z.string(),
+});
+
+type DocSchema = z.infer<typeof docSchema>;
+type DocsDocument = Document & DocSchema;
+
+// Transform:
+const docTransform = async (
+  folder: string,
+  document: DocsDocument,
+  context: Context,
+) => {
+  const highlighter = await highlight();
+  const tableOfContents = getTableOfContents(document.content);
+  const mdx = await compileMDX(context, document, {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeComponent,
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          properties: {
+            className: [HEADING_LINK_ANCHOR],
+          },
+        },
+      ],
+      rehypeReactDoc,
+      [rehypeShiki, highlighter, rehypeShikiOptions],
+    ],
+  });
+  return {
+    ...document,
+    folder,
+    tableOfContents,
+    mdx,
+  };
 };
 
-// Docs Collection:
-const docs = defineCollection({
-  name: "docs",
+// Collections:
+const generalDocs = defineCollection({
+  name: "general",
   directory: "src/docs",
   include: "**/*.mdx",
-  schema: (z) => ({
-    title: z.string(),
-    description: z.string(),
-    category: z.string(),
-  }),
-  transform: async (document, context) => {
-    const filePath = path.join(
-      context.collection.directory,
-      document._meta.filePath,
-    );
-    const { mtimeMs, birthtimeMs } = await fs.stat(filePath);
-    const mdx = await compileMDX(context, document, {
-      remarkPlugins: [remarkGfm, remarkHeading, remarkStructure],
-      rehypePlugins: [
-        // Rehype Component:
-        rehypeComponent,
-        // Shiki Syntax Highlighting:
-        [rehypeShiki, shikiOptions],
-        // Open External Links in New Tab:
-        () => (tree) => {
-          visit(tree, "element", (e) => {
-            if (
-              e.tagName === "a" &&
-              e.properties?.href &&
-              e.properties.href.toString().startsWith("http") &&
-              !e.properties.href.toString().includes(domain)
-            ) {
-              e.properties!["target"] = "_blank";
-            }
-          });
-        },
-        [rehypeAutolinkHeadings],
-      ],
-    });
-    const slugger = new GithubSlugger();
-    const regXHeader = /(?:^|\n)(?<flag>##+)\s+(?<content>.+)/g;
-    const tableOfContents = Array.from(
-      document.content.matchAll(regXHeader),
-    ).map(({ groups }) => {
-      const flag = groups?.flag;
-      const content = groups?.content;
-      return {
-        level: flag?.length,
-        text: content,
-        slug: content ? slugger.slug(content) : undefined,
-      };
-    });
-    return {
-      ...document,
-      mdx,
-      slug: document._meta.path,
-      url: `/${document._meta.path}`,
-      toc: tableOfContents,
-      createdAt: new Date(birthtimeMs),
-      updatedAt: new Date(mtimeMs),
-    };
-  },
+  schema: docSchema,
+  transform: (document, context) => docTransform("general", document, context),
+});
+
+const gstartedDocs = defineCollection({
+  name: "gstarted",
+  directory: "src/docs/getting-started",
+  include: "**/*.mdx",
+  schema: docSchema,
+  transform: (document, context) =>
+    docTransform("getting-started", document, context),
+});
+
+const componentsDocs = defineCollection({
+  name: "components",
+  directory: "src/docs/components",
+  include: "**/*.mdx",
+  schema: docSchema,
+  transform: (document, context) =>
+    docTransform("components", document, context),
+});
+
+const shikiDocs = defineCollection({
+  name: "shiki",
+  directory: "src/docs/shiki",
+  include: "**/*.mdx",
+  schema: docSchema,
+  transform: (document, context) => docTransform("shiki", document, context),
 });
 
 export default defineConfig({
-  collections: [docs],
+  collections: [generalDocs, gstartedDocs, componentsDocs, shikiDocs],
 });
