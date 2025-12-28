@@ -11,6 +11,7 @@ export type ShadcnType =
 
 export interface ShadcnRegistry {
   mainType: ShadcnType;
+  target?: string;
   dependencies?: string[];
   registryDependencies?: string[];
   files?: {

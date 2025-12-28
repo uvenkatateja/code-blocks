@@ -14,6 +14,7 @@ const CSSFiles: RegistryComponent[] = [
     fileType: "css",
     mainSourceFile: `${stylesFolder}/sugar-high.css`,
     shadcnRegistry: {
+      target: "src/styles/sugar-high.css",
       mainType: "registry:file",
     },
   },

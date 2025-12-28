@@ -18,11 +18,13 @@ const RegistrySchema = {
 interface RegistryItem {
   name: string;
   type: ShadcnType;
+
   dependencies?: string[];
   registryDependencies?: string[];
   files: [
     {
       path: string;
+      target?: string;
       type: ShadcnType;
     },
   ];
@@ -44,6 +46,10 @@ const buildRegistry = () => {
         },
       ],
     };
+
+    if (component.shadcnRegistry.target) {
+      item.files[0].target = component.shadcnRegistry.target;
+    }
 
     if (component.shadcnRegistry.dependencies) {
       item.dependencies = component.shadcnRegistry.dependencies;
@@ -73,7 +79,12 @@ const main = () => {
     execSync("shadcn build", { stdio: "inherit" });
     log(chalk.green("|- ✅ shadcn build completed successfully"));
   } catch (error) {
-    log(chalk.red("|- ❌ Error deleting registry.json:"), error);
+    console.log(
+      chalk.red.bold(
+        "|- ❌ Error generating registry or running shadcn CLI. Run pnpm build:registry locally and check registry.json file or shadcn CLI errors.",
+      ),
+      error,
+    );
     process.exit(1);
   }
 };
