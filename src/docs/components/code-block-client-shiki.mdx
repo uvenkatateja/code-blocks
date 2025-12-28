@@ -22,7 +22,7 @@ Before creating the component, make sure you have the basic structure:
 
 ## Usage
 
-Now you can use the `CodeblockClientShiki` into your ``CodeBlockContent`` component:
+Now you can use the `CodeblockShiki` into your ``CodeBlockContent`` component:
 
 ```tsx {6,11}
 import {
@@ -30,12 +30,12 @@ import {
   CodeBlockContent,
   CodeBlockHeader,
 } from "@/components/code-block";
-import { CodeblockClientShiki } from "@/components/code-block/client/shiki";
+import { CodeblockShiki } from "@/components/code-block/client/shiki";
 
 <CodeBlock>
   <CodeBlockHeader language="ts" title="Code block rendered on client side" />
   <CodeBlockContent>
-    <CodeblockClientShiki language="ts" code="console.log('Hello, world!');" />
+    <CodeblockShiki language="ts" code="console.log('Hello, world!');" />
   </CodeBlockContent>
 </CodeBlock>;
 ```
