@@ -9,7 +9,7 @@ interface DocsLayoutProps {
   children: ReactNode;
 }
 
-const DocsLayout = async ({ children }: DocsLayoutProps) => {
+const DocsLayout = ({ children }: DocsLayoutProps) => {
   return (
     <>
       <Header layout="docs" />
