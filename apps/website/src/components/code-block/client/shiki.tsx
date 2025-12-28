@@ -34,7 +34,7 @@ const CodeblockShiki = ({
       });
       setHighlightedHtml(html);
     }
-    clientHighlight();
+    void clientHighlight();
   }, [code, language]);
 
   const classNames = cn("w-full overflow-x-auto", className);
