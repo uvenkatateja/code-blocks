@@ -14,7 +14,7 @@ import {
   type Component,
 } from "content-collections";
 
-const allDocs = [
+const allDocsArray = [
   ...allGenerals,
   ...allGstarteds,
   ...allShikis,
@@ -32,6 +32,11 @@ interface GetDocument {
   document: string;
 }
 
+const allDocs = allDocsArray.filter(
+  (doc, index, self) =>
+    index === self.findIndex((d) => d.folder === doc.folder && d._meta.path === doc._meta.path),
+);
+
 const getDocument = ({ folder, document }: GetDocument): Doc | undefined => {
   const doc = allDocs.find(
     (doc) => doc.folder === folder && doc._meta.path === document,
@@ -43,4 +48,23 @@ const getDocument = ({ folder, document }: GetDocument): Doc | undefined => {
   return { ...doc, tableOfContents };
 };
 
-export { getDocument };
+const getDocsByCategory = () => {
+  const grouped = allDocs.reduce(
+    (acc, doc) => {
+      const category = doc.category || "Other";
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(doc);
+      return acc;
+    },
+    {} as Record<string, typeof allDocs>,
+  );
+
+  return Object.entries(grouped).map(([category, docs]) => ({
+    category,
+    docs,
+  }));
+};
+
+export { getDocument, getDocsByCategory };
