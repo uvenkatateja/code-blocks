@@ -20,17 +20,30 @@ export default MyComponent;
 
 ## Installation
 
+### shadcn/ui
+
+<MDXHighlightTabs>
+  <TabsContent value="shiki">
+
+<CopyShadcnCommand name="code-block-mdx-shiki" />
+
+  </TabsContent>
+  <TabsContent value="sugar-high">
+    
+<CopyShadcnCommand name="code-block-mdx-sugar-high" />
+
+  </TabsContent>
+</MDXHighlightTabs>
+
+### Manual
+
 Before creating the MDX component, make sure you have the basic component structure:
 
 <DocCard folder="components" document="code-block" />
 
 1. Install the following dependencies:
 
-<CopyWithPkgManager
-  title="MDX Types"
-  type="install"
-  command="@types/mdx -D"
-/>
+<CopyWithPkgManager title="MDX Types" type="install" command="@types/mdx -D" />
 
 2. Create the Copy Button component:
 
@@ -40,15 +53,14 @@ Before creating the MDX component, make sure you have the basic component struct
 
 <ShowSource component="react-to-text" />
 
-
 ## Highlighter Setup
 
 Setup your MDX highlighter:
 
-<MDXCodeBlockSource>
+<MDXHighlightTabs>
   <TabsContent value="shiki">
 
-1. Setup ``data-title`` & ``data-language``:
+1. Setup `data-title` & `data-language`:
 
 <DocCard folder="shiki" document="add-properties" anchor="addtitleproperty" />
 
@@ -56,7 +68,7 @@ Setup your MDX highlighter:
 
 <DocCard folder="shiki" document="highlighter" anchor="mdx-integration" />
 
-3. Create your ``PreShikiComponent`` component:
+3. Create your `PreShikiComponent` component:
 
 <ShowSource component="code-block-mdx-shiki" />
 
@@ -78,4 +90,4 @@ const MDXComponents: MDXComponentsType = {
   <TabsContent value="sugar-high">
     <ShowSource component="code-block-mdx-sugar-high" />
   </TabsContent>
-</MDXCodeBlockSource>
+</MDXHighlightTabs>

@@ -32,9 +32,17 @@ const html = highlighter.codeToHtml(code, {
 
 ## Installation
 
+### shadcn/ui
+
+<CopyShadcnCommand
+  name="shiki-add-to-pre-element"
+/>
+
+### Manual
+
 1. Create a `src/utils/shiki/transformers/add-to-pre-element.ts` file and add the following code:
 
-<ShowSource component="shiki-custom-properties" />
+<ShowSource component="shiki-add-to-pre-element" />
 
 2. Update your `rehypeShiki` plugin to use the new transformers:
 
