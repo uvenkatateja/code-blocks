@@ -26,7 +26,8 @@ const Sidebar = ({ children, position }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        "fixed h-full w-56",
+        "fixed w-56",
+        "h-[calc(100vh-3.5rem)]",
         "hidden md:block",
         "overflow-x-hidden overflow-y-auto",
         "border-neutral-200 dark:border-neutral-800",
@@ -34,7 +35,7 @@ const Sidebar = ({ children, position }: SidebarProps) => {
         position === "left" ? "left-0 border-r" : "right-0 border-l",
       )}
     >
-      <div className="py-6">{children}</div>
+      <div className="overscroll-none py-6">{children}</div>
     </aside>
   );
 };
