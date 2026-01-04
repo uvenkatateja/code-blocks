@@ -1,7 +1,4 @@
-import type {
-  RegistryComponent,
-  ShadcnRegistry,
-} from "@/components/registry/types";
+import type { RegistryComponent } from "@/components/registry/types";
 import { lazy } from "react";
 
 // Settings:
@@ -9,33 +6,8 @@ const utilsFolder = "src/utils";
 const stylesFolder = "src/styles";
 const componentsFolder = "src/components";
 const codeblockComponent = "src/components/code-block";
-const registryUrl = "https://code-blocks.pheralb.dev/r/";
 
-// Blocks:
-const BlocksData: ShadcnRegistry[] = [
-  {
-    name: "code-block-client-shiki",
-    type: "registry:block",
-    registryDependencies: [
-      `${registryUrl}code-block-structure.json`,
-      `${registryUrl}shiki-highlighter.json`,
-      `${registryUrl}code-block-client-shiki.json`,
-      `${registryUrl}copy-button.json`,
-    ],
-  },
-  {
-    name: "code-block-client-sugar-high",
-    type: "registry:block",
-    registryDependencies: [
-      `${registryUrl}code-block-structure.json`,
-      `${registryUrl}sugar-high-highlighter.json`,
-      `${registryUrl}code-block-client-sugar-high.json`,
-      `${registryUrl}copy-button.json`,
-    ],
-  },
-];
-
-// UI Components:
+// CSS Files:
 const CSSFiles: RegistryComponent[] = [
   {
     title: "Sugar High CSS",
@@ -141,9 +113,9 @@ const UIComponents: RegistryComponent[] = [
     title: "Code Block - Structure",
     fileType: "tsx",
     fileSource: `${codeblockComponent}/code-block.tsx`,
-    exampleFileSource: `${componentsFolder}/previews/code-block-structure.tsx`,
+    exampleFileSource: `${componentsFolder}/previews/code-block-structure-example.tsx`,
     reactComponent: lazy(
-      () => import("@/components/previews/code-block-structure"),
+      () => import("@/components/previews/code-block-structure-example"),
     ),
     shadcnRegistry: {
       name: "code-block-structure",
@@ -223,11 +195,57 @@ const UIComponents: RegistryComponent[] = [
   },
 ];
 
+// Blocks:
+const Blocks: RegistryComponent[] = [
+  {
+    title: "Blocks - Inline Code",
+    fileType: "tsx",
+    fileSource: `${codeblockComponent}/blocks/inline-code.tsx`,
+    exampleFileSource: `${componentsFolder}/previews/inline-code-example.tsx`,
+    reactComponent: lazy(
+      () => import("@/components/previews/inline-code-example"),
+    ),
+    shadcnRegistry: {
+      name: "block-inline-code",
+      type: "registry:block",
+      registryDependencies: ["code-block-client-shiki"],
+    },
+  },
+  {
+    title: "Blocks - Copy with Package Manager",
+    fileType: "tsx",
+    fileSource: `${codeblockComponent}/blocks/copy-with-pkg-manager.tsx`,
+    exampleFileSource: `${componentsFolder}/previews/copy-with-pkg-manager-example.tsx`,
+    reactComponent: lazy(
+      () => import("@/components/previews/copy-with-pkg-manager-example"),
+    ),
+    shadcnRegistry: {
+      name: "block-copy-with-pkg-manager",
+      type: "registry:block",
+      registryDependencies: ["code-block-client-shiki"],
+    },
+  },
+  {
+    title: "Blocks - Select Package Manager",
+    fileType: "tsx",
+    fileSource: `${codeblockComponent}/blocks/select-pkg-manager.tsx`,
+    reactComponent: lazy(
+      () => import("@/components/code-block/blocks/select-pkg-manager"),
+    ),
+    shadcnRegistry: {
+      name: "block-select-pkg-manager",
+      type: "registry:block",
+      registryDependencies: ["code-block-client-shiki"],
+    },
+  },
+];
+
 const RegistryData: RegistryComponent[] = [
   ...UtilsFiles,
   ...CSSFiles,
   ...ShikiTransformers,
   ...UIComponents,
+  ...Blocks,
 ];
 
-export { RegistryData, BlocksData };
+export { RegistryData };

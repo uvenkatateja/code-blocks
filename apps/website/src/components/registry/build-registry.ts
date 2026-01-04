@@ -1,12 +1,14 @@
 import type { ShadcnRegistry } from "./types";
 
 import chalk from "chalk";
-import { RegistryData, BlocksData } from "./data";
+import { RegistryData } from "./data";
 
 import { writeFileSync } from "fs";
 import { execSync } from "child_process";
 
 const log = console.log;
+
+const registryUrl = "https://code-blocks.pheralb.dev/r/";
 
 const RegistrySchema = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
@@ -42,14 +44,14 @@ const buildRegistry = () => {
       item.dependencies = component.shadcnRegistry.dependencies;
     }
     if (component.shadcnRegistry.registryDependencies) {
-      item.registryDependencies = component.shadcnRegistry.registryDependencies;
+      item.registryDependencies =
+        component.shadcnRegistry.registryDependencies.map(
+          (dep) => `${registryUrl}${dep}.json`,
+        );
     }
 
     registryItems.push(item);
   }
-
-  // Add BlocksData
-  registryItems.push(...BlocksData);
 
   return {
     ...RegistrySchema,
