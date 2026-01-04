@@ -34,14 +34,17 @@ export function rehypeComponent() {
             return;
           }
 
-          if (!component.exampleFileSource) {
+          const sourceFile =
+            component.exampleFileSource || component.fileSource;
+
+          if (!sourceFile) {
             console.warn(
-              `|- ⚠️ mdx/rehypeComponent/plugin - Component "${title}" does not have an example source file. Add "exampleFileSource" to the component registry.`,
+              `|- ⚠️ mdx/rehypeComponent/plugin - Component "${title}" does not have a fileSource or exampleFileSource. Fix component registry.`,
             );
             return;
           }
 
-          const src = path.resolve(process.cwd(), component.exampleFileSource);
+          const src = path.resolve(process.cwd(), sourceFile);
           const source = fs.readFileSync(src, "utf8");
 
           if (!source) {
