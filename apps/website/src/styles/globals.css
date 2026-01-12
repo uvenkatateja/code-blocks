@@ -36,7 +36,7 @@
 
 .prose
   :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  @apply not-italic bg-neutral-200/40 dark:bg-neutral-800/40;
+  @apply bg-neutral-200/40 not-italic dark:bg-neutral-800/40;
 }
 
 .prose
@@ -54,7 +54,7 @@
   :where(:not(pre) > code):not(
     :where([class~="not-prose"], [class~="not-prose"] *)
   ) {
-  @apply bg-neutral-200 px-1.5 py-0.5 text-sm font-mono text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200;
+  @apply bg-neutral-200 px-1.5 py-0.5 font-mono text-sm text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200;
 }
 
 .prose
