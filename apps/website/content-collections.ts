@@ -25,7 +25,7 @@ import { HEADING_LINK_ANCHOR } from "./src/components/ui/headings";
 const docSchema = z.object({
   title: z.string(),
   description: z.string(),
-  category: z.string(),
+  category: z.string().array(),
   content: z.string(),
 });
 
@@ -92,16 +92,16 @@ const gstartedDocs = defineCollection({
   },
 });
 
-const componentsDocs = defineCollection({
-  name: "components",
-  directory: "src/docs/components",
+const reactDocs = defineCollection({
+  name: "react",
+  directory: "src/docs/react",
   include: "**/*.mdx",
   schema: docSchema,
   transform: (document, context) =>
-    docTransform("components", document, context),
+    docTransform("react", document, context),
   onSuccess: (docs) => {
     console.log(
-      `|- (content-collections) ✅ components Collection - Successfully processed ${docs.length} documents.`,
+      `|- (content-collections) ✅ react Collection - Successfully processed ${docs.length} documents.`,
     );
   },
 });
@@ -137,7 +137,7 @@ export default defineConfig({
   collections: [
     generalDocs,
     gstartedDocs,
-    componentsDocs,
+    reactDocs,
     shikiDocs,
     sugarHighDocs,
   ],

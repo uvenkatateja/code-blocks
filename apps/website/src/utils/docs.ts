@@ -5,13 +5,13 @@ import {
   allGenerals,
   allGstarteds,
   allShikis,
-  allComponents,
+  allReacts,
   allShighs,
   type General,
   type Gstarted,
   type Shiki,
   type Shigh,
-  type Component,
+  type React,
 } from "content-collections";
 
 const allDocsArray = [
@@ -19,11 +19,11 @@ const allDocsArray = [
   ...allGstarteds,
   ...allShikis,
   ...allShighs,
-  ...allComponents,
+  ...allReacts,
 ];
 
 type Doc = Document &
-  (General | Gstarted | Shiki | Shigh | Component) & {
+  (General | Gstarted | Shiki | Shigh | React) & {
     tableOfContents: ToCItem[];
   };
 
