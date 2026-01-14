@@ -1,7 +1,7 @@
 ---
 title: Line Numbers
 description: How to enable line numbers in code blocks using Shiki.
-category: Shiki
+category: [Markdown, MDX, Shiki]
 ---
 
 <Showcase>
@@ -23,9 +23,7 @@ const html = highlighter.codeToHtml(code, {
 
 ### shadcn/ui
 
-<CopyShadcnCommand
-  name="shiki-show-line-numbers"
-/>
+<CopyShadcnCommand name="shiki-show-line-numbers" />
 
 ### Manual
 
@@ -66,12 +64,11 @@ const rehypeShikiOptions: RehypeShikiCoreOptions = {
 export { rehypeShikiOptions };
 ```
 
-
 ## Usage
 
 To enable line numbers in your code blocks, add the `lineNumbers` property to the code block in your MDX files:
 
-````md title="MDX Code Block with Line Numbers" lineNumbers
+````mdx title="MDX Code Block with Line Numbers"
 ```ts lineNumbers
 // Your TypeScript code here
 ```
