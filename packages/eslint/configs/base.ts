@@ -8,7 +8,7 @@ import ts from "typescript-eslint";
 import turbo from "eslint-plugin-turbo";
 
 export const baseConfig = defineConfig(
-  includeIgnoreFile(path.join(import.meta.dirname, "../../.gitignore")),
+  includeIgnoreFile(path.join(import.meta.dirname, "../../../.gitignore")),
   { ignores: ["**/*.config.*"] },
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],
