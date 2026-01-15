@@ -47,7 +47,7 @@ const Hero = () => {
           href={globals.githubUrl}
           className={buttonVariants({
             size: "default",
-            variant: "outline",
+            variant: "ghost",
             className: "w-full no-underline md:w-44",
           })}
         >
