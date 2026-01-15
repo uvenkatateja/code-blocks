@@ -1,5 +1,11 @@
 import { getDocument } from "@/utils/docs";
-import { ArrowUpRightIcon, ChevronRightIcon, FileIcon } from "lucide-react";
+
+import {
+  FileIcon,
+  ArrowUpRightIcon,
+  ChevronRightIcon,
+  CornerDownRightIcon,
+} from "lucide-react";
 import { ExternalLink } from "@/components/ui/external-link";
 
 interface DocCardProps {
@@ -24,10 +30,19 @@ const DocCard = ({ document, folder, anchor }: DocCardProps) => {
             </span>
             <ChevronRightIcon size={12} />
             <span>{documentData?.title}</span>
+            {anchor && (
+              <>
+                <ChevronRightIcon size={12} />
+                <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                  #{anchor}
+                </span>
+              </>
+            )}
           </div>
         </div>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {documentData?.description}
+        <p className="flex items-center space-x-1.5 text-sm text-neutral-600 dark:text-neutral-400">
+          <CornerDownRightIcon size={12} />
+          <span>{documentData?.description}</span>
         </p>
       </div>
       <ArrowUpRightIcon className="absolute top-2 right-2 h-4 w-4 text-neutral-600 dark:text-neutral-400" />

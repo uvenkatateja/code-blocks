@@ -9,6 +9,11 @@ import MDXHighlightTabs from "@/components/docs/mdx-highlight-tabs";
 import CopyShadcnCommand from "@/components/docs/copy-shadcn-command";
 import CopyWithPkgManager from "@/components/code-block/blocks/copy-with-pkg-manager";
 
+import {
+  CreateReactApp,
+  HighlightsAvailable,
+} from "@/components/docs/prerequisites-cards";
+
 // MDX Components:
 import { TabsContent } from "@/components/ui/tabs";
 import { AMDXComponent } from "@/components/mdx/a-component";
@@ -40,6 +45,8 @@ const MDXCustomComponents: MDXComponents = {
   ComponentPreview,
   Hero,
   Features,
+  CreateReactApp,
+  HighlightsAvailable,
 };
 
 export { MDXCustomComponents };

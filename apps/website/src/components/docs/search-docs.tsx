@@ -14,12 +14,12 @@ import {
 import { Button } from "@/components/ui/button";
 
 import { SearchIcon } from "lucide-react";
-import { getDocsByCategory } from "@/utils/docs";
+import { getDocsByFolder } from "@/utils/docs";
 
 const SearchDocs = () => {
   const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
-  const docsByCategory = getDocsByCategory();
+  const docsByFolder = getDocsByFolder();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -54,8 +54,8 @@ const SearchDocs = () => {
         <CommandInput placeholder="Search" />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          {docsByCategory.map(({ category, docs }) => (
-            <CommandGroup key={category} heading={category} className="my-2">
+          {Object.entries(docsByFolder).map(([folder, docs]) => (
+            <CommandGroup key={folder} heading={folder} className="my-2">
               {docs.map((doc) => (
                 <CommandItem
                   key={doc._meta.path}

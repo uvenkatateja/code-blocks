@@ -51,17 +51,17 @@ export const SidebarLinksData: SidebarLinks[] = [
       {
         title: "Copy Button",
         icon: ClipboardIcon,
-        href: "/docs/components/copy-button",
+        href: "/docs/react/copy-button",
       },
       {
         title: "Code Block",
         icon: SquareDashedIcon,
-        href: "/docs/components/code-block",
+        href: "/docs/react/code-block",
       },
       {
         title: "Code Block MDX",
         icon: FileCodeCornerIcon,
-        href: "/docs/components/code-block-mdx",
+        href: "/docs/react/code-block-mdx",
       },
       {
         title: "Code Block Client",
@@ -69,18 +69,18 @@ export const SidebarLinksData: SidebarLinks[] = [
         subItems: [
           {
             title: "with Shiki",
-            href: "/docs/components/code-block-client-shiki",
+            href: "/docs/react/code-block-client-shiki",
           },
           {
             title: "with Sugar High",
-            href: "/docs/components/code-block-client-sugar-high",
+            href: "/docs/react/code-block-client-sugar-high",
           },
         ],
       },
       {
         title: "Blocks",
         icon: PackageIcon,
-        href: "/docs/components/blocks",
+        href: "/docs/react/blocks",
       },
     ],
   },
