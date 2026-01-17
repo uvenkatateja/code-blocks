@@ -7,6 +7,7 @@ import ShowSource from "@/components/docs/show-source";
 import ComponentPreview from "@/components/docs/component-preview";
 import MDXHighlightTabs from "@/components/docs/mdx-highlight-tabs";
 import CopyShadcnCommand from "@/components/docs/copy-shadcn-command";
+import DocNeutralColors from "@/components/docs/doc-neutral-colors";
 import CopyWithPkgManager from "@/components/code-block/blocks/copy-with-pkg-manager";
 
 import {
@@ -47,6 +48,7 @@ const MDXCustomComponents: MDXComponents = {
   Features,
   CreateReactApp,
   HighlightsAvailable,
+  DocNeutralColors,
 };
 
 export { MDXCustomComponents };
