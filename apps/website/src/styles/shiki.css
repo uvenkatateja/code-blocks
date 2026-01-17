@@ -4,14 +4,14 @@
 /* Shiki */
 html.light .shiki,
 html.light .shiki span {
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-mono);
   background-color: transparent !important;
 }
 
 html.dark .shiki,
 html.dark .shiki span {
+  font-family: var(--font-mono);
   color: var(--shiki-dark) !important;
-  font-family: var(--font-mono) !important;
   background-color: transparent !important;
 }
 
@@ -36,8 +36,7 @@ pre.shiki-line-numbers code:has(.line:nth-child(2)) .line::before {
   margin-right: 1rem;
   margin-left: 0.3rem;
   display: inline-block;
-  text-align: right;
-  @apply font-mono text-xs text-neutral-400 dark:text-neutral-600;
+  @apply text-right font-mono text-xs text-neutral-400 dark:text-neutral-600;
 }
 
 /* Shiki Highlight */
