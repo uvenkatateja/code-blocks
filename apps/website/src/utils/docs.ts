@@ -41,9 +41,11 @@ const allDocs = allDocsArray.filter(
 );
 
 const getDocument = ({ folder, document }: GetDocument): Doc | undefined => {
-  const doc = allDocs.find(
-    (doc) => doc.folder === folder && doc._meta.path === document,
-  );
+  const normalizedDocument = document.replace(/\\/g, "/");
+  const doc = allDocs.find((doc) => {
+    const normalizedPath = doc._meta.path.replace(/\\/g, "/");
+    return doc.folder === folder && normalizedPath === normalizedDocument;
+  });
   if (!doc) {
     return undefined;
   }
@@ -71,9 +73,11 @@ const getDocumentContent = ({
   folder,
   document,
 }: GetDocument): string | undefined => {
-  const doc = allDocs.find(
-    (doc) => doc.folder === folder && doc._meta.path === document,
-  );
+  const normalizedDocument = document.replace(/\\/g, "/");
+  const doc = allDocs.find((doc) => {
+    const normalizedPath = doc._meta.path.replace(/\\/g, "/");
+    return doc.folder === folder && normalizedPath === normalizedDocument;
+  });
   return doc ? doc.mdx : undefined;
 };
 

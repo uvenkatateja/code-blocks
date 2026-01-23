@@ -13,13 +13,14 @@ import DocHeader from "@/components/docs/doc-header";
 import TableOfContents from "@/components/docs/toc-menu";
 
 interface DocsPageProps {
-  params: Promise<{ folder: string; document: string }>;
+  params: Promise<{ folder: string; slug: string[] }>;
 }
 
 export async function generateMetadata({
   params,
 }: DocsPageProps): Promise<Metadata> {
-  const { folder, document } = await params;
+  const { folder, slug } = await params;
+  const document = slug.join('/');
   const data = getDocument({
     folder,
     document,
@@ -31,7 +32,8 @@ export async function generateMetadata({
 }
 
 const DocsPage = async ({ params }: DocsPageProps) => {
-  const { folder, document } = await params;
+  const { folder, slug } = await params;
+  const document = slug.join('/');
   const data = getDocument({
     folder,
     document,
