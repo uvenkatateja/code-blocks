@@ -29,9 +29,14 @@
   @apply mb-5 scroll-mt-20 text-2xl font-semibold;
 }
 
+.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply mb-4 scroll-mt-20 text-xl font-semibold;
+}
+
+.prose :where(h2 > a):not(:where([class~="not-prose"], [class~="not-prose"] *)),
 .prose
-  :where(h2 > a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  @apply no-underline decoration-neutral-600 underline-offset-[6px] hover:underline hover:opacity-85 dark:decoration-neutral-400;
+  :where(h3 > a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply no-underline hover:opacity-85;
 }
 
 .prose
