@@ -1,8 +1,8 @@
-import CopyWithPkgManager from "../code-block/blocks/copy-with-pkg-manager";
+import { CodeBlockTabsPkg } from "@/components/code-block/blocks/copy-with-tabs-package-manager";
 
 const CopyWithPkgManagerExample = () => {
   return (
-    <CopyWithPkgManager
+    <CodeBlockTabsPkg
       type="install"
       title="Install React-Symbols Icons"
       command="@react-symbols/icons"

@@ -1,10 +1,18 @@
 "use client";
 
 import { useState, type FC, type SVGProps } from "react";
-import { usePkgManager, type PackageManager } from "@/stores/pkgManager";
+import {
+  usePackageManager,
+  type PackageManager,
+} from "@/stores/packageManager";
 
-import { cn } from "@/utils/cn";
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import {
+  CodeBlock,
+  CodeBlockContent,
+  CodeBlockHeader,
+} from "@/components/code-block/code-block";
+import { CopyButton } from "@/components/code-block/copy-button";
+import { CodeblockShiki } from "@/components/code-block/client/shiki";
 
 import {
   DropdownMenu,
@@ -12,38 +20,57 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Bun, NPM, PNPM, Yarn } from "@react-symbols/icons";
 
-interface Package {
-  name: PackageManager;
-  icon: FC<SVGProps<SVGSVGElement>>;
+import { cn } from "@/utils/cn";
+import { Bun, NPM, PNPM, Yarn } from "@react-symbols/icons";
+import { CheckIcon, ChevronDownIcon } from "lucide-react";
+
+interface CodeBlockSelectPkgProps {
+  command: string;
+  title: string;
+  type: "install" | "dlx";
 }
 
-const Packages: Package[] = [
+interface Command {
+  name: PackageManager;
+  install: string;
+  icon: FC<SVGProps<SVGSVGElement>>;
+  dlx: string;
+}
+
+const Commands: Command[] = [
   {
     name: "npm",
+    install: "npm i",
     icon: NPM,
+    dlx: "npx",
   },
   {
     name: "pnpm",
+    install: "pnpm i",
     icon: PNPM,
+    dlx: "pnpm dlx",
   },
   {
     name: "yarn",
+    install: "yarn add",
     icon: Yarn,
+    dlx: "yarn dlx",
   },
   {
     name: "bun",
+    install: "bun add",
     icon: Bun,
+    dlx: "bunx --bun",
   },
 ];
 
-const SelectPkgManager = () => {
+const SelectPackageManager = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { packageManager, setPackageManager } = usePkgManager();
+  const { packageManager, setPackageManager } = usePackageManager();
 
   const selectedPkg =
-    Packages.find((pkg) => pkg.name === packageManager) ?? Packages[0];
+    Commands.find((pkg) => pkg.name === packageManager) ?? Commands[0];
   const Icon = selectedPkg.icon;
 
   return (
@@ -63,7 +90,7 @@ const SelectPkgManager = () => {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" alignOffset={2}>
-        {Packages.map((pkg) => {
+        {Commands.map((pkg) => {
           const PkgIcon = pkg.icon;
           return (
             <DropdownMenuItem
@@ -85,4 +112,30 @@ const SelectPkgManager = () => {
   );
 };
 
-export default SelectPkgManager;
+const CodeBlockSelectPkg = ({
+  title,
+  type,
+  command,
+}: CodeBlockSelectPkgProps) => {
+  const { packageManager } = usePackageManager();
+
+  const selectedPkg =
+    Commands.find((pkg) => pkg.name === packageManager) ?? Commands[0];
+  const fullCommand = `${selectedPkg[type]} ${command}`;
+
+  return (
+    <CodeBlock>
+      <CodeBlockHeader title={title} language="bash">
+        <div className="flex items-center space-x-2 divide-x divide-neutral-300 dark:divide-neutral-700">
+          <SelectPackageManager />
+          <CopyButton className="pl-1" content={fullCommand} />
+        </div>
+      </CodeBlockHeader>
+      <CodeBlockContent>
+        <CodeblockShiki language="bash" code={fullCommand} />
+      </CodeBlockContent>
+    </CodeBlock>
+  );
+};
+
+export { CodeBlockSelectPkg, SelectPackageManager };
