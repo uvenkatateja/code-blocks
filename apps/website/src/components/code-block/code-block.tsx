@@ -58,7 +58,10 @@ const CodeBlockHeader = ({
               aria-label={LanguageData.title}
             />
           ))}
-        <p>{title ?? LanguageData?.title}</p>
+        {LanguageData ? (
+          <span className="sr-only">{LanguageData.title}</span>
+        ) : null}
+        {title ?? <p>{title}</p>}
       </div>
       {children}
     </div>

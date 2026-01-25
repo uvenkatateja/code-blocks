@@ -2,7 +2,9 @@ import type { ComponentProps } from "react";
 
 import {
   ArrowUpRightIcon,
+  BoxIcon,
   FileCodeCornerIcon,
+  FileCogIcon,
   FileText,
   FileTextIcon,
   SquareCodeIcon,
@@ -14,6 +16,8 @@ import { cn } from "@/utils/cn";
 import { Badge, badgeVariants } from "@/components/ui/badge";
 import { ExternalLink } from "@/components/ui/external-link";
 import { Shiki, SugarHigh, React } from "@/components/ui/svgs";
+import { RadixUI } from "../ui/svgs/radix-ui";
+import { BaseUI } from "../ui/svgs/base-ui";
 
 const categorySvgs = [
   {
@@ -24,11 +28,12 @@ const categorySvgs = [
   {
     name: "Sugar-High",
     icon: SugarHigh,
-    url: "https://sugar-high.vercel.app/"
+    url: "https://sugar-high.vercel.app/",
   },
   {
     name: "React",
     icon: React,
+    url: "https://react.dev/",
   },
   {
     name: "Markdown",
@@ -45,6 +50,24 @@ const categorySvgs = [
   {
     name: "Components",
     icon: SquareDashedMousePointerIcon,
+  },
+  {
+    name: "Zustand",
+    icon: FileCogIcon,
+  },
+  {
+    name: "Radix",
+    icon: RadixUI,
+    url: "https://www.radix-ui.com/primitives",
+  },
+  {
+    name: "Base UI",
+    icon: BaseUI,
+    url: "https://base-ui.com/",
+  },
+  {
+    name: "Blocks",
+    icon: BoxIcon,
   },
 ];
 

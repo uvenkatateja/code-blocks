@@ -40,12 +40,16 @@ const DocCard = ({ document, folder, anchor }: DocCardProps) => {
             )}
           </div>
         </div>
-        <p className="flex items-center space-x-1.5 text-sm text-neutral-600 dark:text-neutral-400">
-          <CornerDownRightIcon size={12} />
-          <span>{documentData?.description}</span>
-        </p>
+        <div className="flex max-w-4xl items-center space-x-1.5 truncate text-sm text-neutral-600 dark:text-neutral-400">
+          <CornerDownRightIcon size={12} className="shrink-0" />
+          <p className="truncate">{documentData?.description}</p>
+        </div>
       </div>
-      <ArrowUpRightIcon className="absolute top-2 right-2 h-4 w-4 text-neutral-600 dark:text-neutral-400" />
+      <ArrowUpRightIcon
+        size={14}
+        strokeWidth={1.5}
+        className="absolute top-2 right-2 text-neutral-600 dark:text-neutral-400"
+      />
     </ExternalLink>
   );
 };
