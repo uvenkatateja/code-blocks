@@ -1,6 +1,6 @@
 "use client";
 
-import { usePkgManager, type PackageManager } from "@/stores/pkgManager";
+import { usePackageManager, type PackageManager } from "@/stores/packageManager";
 
 import {
   CodeBlock,
@@ -11,7 +11,7 @@ import { CopyButton } from "@/components/code-block/copy-button";
 import { CodeblockShiki } from "@/components/code-block/client/shiki";
 
 import { ShadcnUI } from "@/components/ui/svgs/shadcn";
-import SelectPkgManager from "@/components/code-block/blocks/select-pkg-manager";
+import { SelectPackageManager } from "@/components/code-block/blocks/copy-with-select-package-manager";
 
 interface CopyShadcnCommandProps {
   name: string;
@@ -44,7 +44,7 @@ const Commands: Command[] = [
 ];
 
 const CopyShadcnCommand = ({ name }: CopyShadcnCommandProps) => {
-  const { packageManager } = usePkgManager();
+  const { packageManager } = usePackageManager();
 
   const selectedPkg =
     Commands.find((pkg) => pkg.package === packageManager) ?? Commands[0];
@@ -58,7 +58,7 @@ const CopyShadcnCommand = ({ name }: CopyShadcnCommandProps) => {
         icon={<ShadcnUI width={14} height={14} />}
       >
         <div className="flex items-center space-x-2 divide-x divide-neutral-300 dark:divide-neutral-700">
-          <SelectPkgManager />
+          <SelectPackageManager />
           <CopyButton className="pl-1" content={fullCommand} />
         </div>
       </CodeBlockHeader>
