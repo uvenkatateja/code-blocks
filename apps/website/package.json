@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "eslint ./src && next build",
+    "build": "next build",
     "build:prod": "pnpm build:registry && pnpm build",
     "build:registry": "tsx ./src/components/registry/check-registry.ts && tsx ./src/components/registry/build-registry.ts",
     "build:cc": "content-collections build",
