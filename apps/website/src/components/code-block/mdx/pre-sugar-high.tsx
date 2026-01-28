@@ -21,7 +21,7 @@ const PreSugarHighComponent: MDXComponents = {
     });
     return (
       <CodeBlock>
-        <CodeBlockHeader>
+        <CodeBlockHeader className="justify-end">
           <CopyButton content={content} />
         </CodeBlockHeader>
         <CodeBlockContent>

@@ -10,6 +10,7 @@ import {
   CodeBlock,
   CodeBlockContent,
   CodeBlockHeader,
+  CodeBlockIcon,
 } from "@/components/code-block/code-block";
 import { CopyButton } from "@/components/code-block/copy-button";
 import { CodeblockShiki } from "@/components/code-block/client/shiki";
@@ -125,7 +126,11 @@ const CodeBlockSelectPkg = ({
 
   return (
     <CodeBlock>
-      <CodeBlockHeader title={title} language="bash">
+      <CodeBlockHeader>
+        <div className="flex items-center space-x-2">
+          <CodeBlockIcon language="bash" />
+          <span className="font-medium">{title}</span>
+        </div>
         <div className="flex items-center space-x-2 divide-x divide-neutral-300 dark:divide-neutral-700">
           <SelectPackageManager />
           <CopyButton className="pl-1" content={fullCommand} />

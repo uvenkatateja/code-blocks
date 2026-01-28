@@ -10,6 +10,7 @@ import {
   CodeBlock,
   CodeBlockContent,
   CodeBlockHeader,
+  CodeBlockIcon,
 } from "@/components/code-block/code-block";
 import { CopyButton } from "@/components/code-block/copy-button";
 import { CodeblockShiki } from "@/components/code-block/client/shiki";
@@ -26,7 +27,6 @@ interface Command {
 
 interface CodeBlockTabsPkgProps {
   command: string;
-  title: string;
   type: "install" | "dlx";
 }
 
@@ -57,7 +57,7 @@ const Commands: Command[] = [
   },
 ];
 
-const CodeBlockTabsPkg = ({ title, command, type }: CodeBlockTabsPkgProps) => {
+const CodeBlockTabsPkg = ({ command, type }: CodeBlockTabsPkgProps) => {
   const { packageManager, setPackageManager } = usePackageManager();
 
   const selectedPkg =
@@ -70,19 +70,26 @@ const CodeBlockTabsPkg = ({ title, command, type }: CodeBlockTabsPkgProps) => {
       value={packageManager}
       onValueChange={(value) => setPackageManager(value as PackageManager)}
     >
-      <TabsList className="border-0">
-        {Commands.map((cmd) => {
-          const Icon = cmd.icon;
-          return (
-            <TabsTrigger key={cmd.name} value={cmd.name}>
-              <Icon className="size-4" />
-              <span>{cmd.name}</span>
-            </TabsTrigger>
-          );
-        })}
-      </TabsList>
       <CodeBlock>
-        <CodeBlockHeader title={title} language="bash">
+        <CodeBlockHeader>
+          <div className="flex items-center space-x-1">
+            <CodeBlockIcon language="bash" />
+            <TabsList className="border-0 bg-transparent dark:bg-transparent">
+              {Commands.map((cmd) => {
+                const Icon = cmd.icon;
+                return (
+                  <TabsTrigger
+                    key={cmd.name}
+                    value={cmd.name}
+                    className="data-[state=active]:shadow-none"
+                  >
+                    <Icon className="size-4" />
+                    <span>{cmd.name}</span>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </div>
           <CopyButton className="pl-1" content={fullCommand} />
         </CodeBlockHeader>
         <CodeBlockContent>

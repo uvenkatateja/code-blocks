@@ -2,6 +2,8 @@ import {
   CodeBlock,
   CodeBlockHeader,
   CodeBlockContent,
+  CodeBlockIcon,
+  CodeBlockGroup,
 } from "@/components/code-block/code-block";
 
 import { CopyButton } from "@/components/code-block/copy-button";
@@ -9,7 +11,11 @@ import { CopyButton } from "@/components/code-block/copy-button";
 const CodeBlockStructure = () => {
   return (
     <CodeBlock>
-      <CodeBlockHeader language="tsx" title="example.tsx">
+      <CodeBlockHeader>
+        <CodeBlockGroup>
+          <CodeBlockIcon language="ts" />
+          <span>example.ts</span>
+        </CodeBlockGroup>
         <CopyButton content="Your syntax highlighted code goes here." />
       </CodeBlockHeader>
       <CodeBlockContent>

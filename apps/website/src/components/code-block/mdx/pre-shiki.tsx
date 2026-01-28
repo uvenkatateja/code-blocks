@@ -7,6 +7,8 @@ import {
   CodeBlock,
   CodeBlockHeader,
   CodeBlockContent,
+  CodeBlockIcon,
+  CodeBlockGroup,
 } from "@/components/code-block/code-block";
 import { CopyButton } from "@/components/code-block/copy-button";
 
@@ -22,7 +24,11 @@ const PreShikiComponent: MDXComponents = {
     const language = props["data-language"];
     return (
       <CodeBlock>
-        <CodeBlockHeader language={language} title={title}>
+        <CodeBlockHeader>
+          <CodeBlockGroup>
+            <CodeBlockIcon language={language} />
+            <span>{title ?? `.${language}`}</span>
+          </CodeBlockGroup>
           <CopyButton content={content} />
         </CodeBlockHeader>
         <CodeBlockContent>

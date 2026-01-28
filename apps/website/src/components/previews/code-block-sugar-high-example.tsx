@@ -2,6 +2,8 @@ import {
   CodeBlock,
   CodeBlockHeader,
   CodeBlockContent,
+  CodeBlockGroup,
+  CodeBlockIcon,
 } from "@/components/code-block/code-block";
 
 import { CodeBlockSugarHigh } from "@/components/code-block/client/sugar-high";
@@ -11,7 +13,11 @@ const CodeBlockSugarHighExample = () => {
   const code = `console.log('Hello, world!');`;
   return (
     <CodeBlock>
-      <CodeBlockHeader language="ts" title="Code block + Sugar High">
+      <CodeBlockHeader>
+        <CodeBlockGroup>
+          <CodeBlockIcon language="ts" />
+          <span>Code Block + Sugar High</span>
+        </CodeBlockGroup>
         <CopyButton content={code} />
       </CodeBlockHeader>
       <CodeBlockContent>

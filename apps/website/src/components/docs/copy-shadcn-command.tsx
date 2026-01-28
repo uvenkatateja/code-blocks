@@ -1,6 +1,9 @@
 "use client";
 
-import { usePackageManager, type PackageManager } from "@/stores/packageManager";
+import {
+  usePackageManager,
+  type PackageManager,
+} from "@/stores/packageManager";
 
 import {
   CodeBlock,
@@ -52,11 +55,11 @@ const CopyShadcnCommand = ({ name }: CopyShadcnCommandProps) => {
 
   return (
     <CodeBlock>
-      <CodeBlockHeader
-        title="shadcn/ui Command"
-        language="bash"
-        icon={<ShadcnUI width={14} height={14} />}
-      >
+      <CodeBlockHeader>
+        <div className="flex items-center space-x-2">
+          <ShadcnUI width={14} height={14} />
+          <span className="font-medium">shadcn/ui Command</span>
+        </div>
         <div className="flex items-center space-x-2 divide-x divide-neutral-300 dark:divide-neutral-700">
           <SelectPackageManager />
           <CopyButton className="pl-1" content={fullCommand} />

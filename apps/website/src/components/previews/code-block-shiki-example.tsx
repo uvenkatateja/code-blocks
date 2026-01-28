@@ -2,6 +2,8 @@ import {
   CodeBlock,
   CodeBlockHeader,
   CodeBlockContent,
+  CodeBlockGroup,
+  CodeBlockIcon,
 } from "@/components/code-block/code-block";
 
 import { CopyButton } from "@/components/code-block/copy-button";
@@ -11,7 +13,11 @@ const CodeBlockShikiExample = () => {
   const code = `console.log('Hello, world!');`;
   return (
     <CodeBlock>
-      <CodeBlockHeader language="ts" title="Code block + Shiki">
+      <CodeBlockHeader>
+        <CodeBlockGroup>
+          <CodeBlockIcon language="ts" />
+          <span>Code Block + Shiki</span>
+        </CodeBlockGroup>
         <CopyButton content={code} />
       </CodeBlockHeader>
       <CodeBlockContent>
