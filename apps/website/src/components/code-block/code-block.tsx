@@ -1,13 +1,7 @@
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps } from "react";
 
 import { cn } from "@/utils/cn";
-import { LanguageSvgs } from "@/components/code-block/language-svgs";
-
-interface CodeBlockHeaderProps extends ComponentProps<"div"> {
-  language?: string;
-  title?: string;
-  icon?: ReactNode;
-}
+import { FileIcon } from "@react-symbols/icons/utils";
 
 const CodeBlock = ({
   children,
@@ -31,38 +25,60 @@ const CodeBlock = ({
   );
 };
 
+type CodeBlockHeaderProps = ComponentProps<"div">;
+
 const CodeBlockHeader = ({
-  title,
-  icon,
-  language,
   children,
+  className,
   ...props
 }: CodeBlockHeaderProps) => {
-  const LanguageData = LanguageSvgs.find((lang) => lang.language === language);
-  const LanguageIcon = LanguageData?.icon;
   return (
     <div
       className={cn(
         "not-prose", // Disable Markdown Styles
-        "flex items-center justify-between px-2 py-1.5",
+        "flex h-9 items-center justify-between px-2 py-1.5",
         "text-sm text-neutral-600 dark:text-neutral-400",
-        props.className,
+        className,
       )}
+      {...props}
     >
-      <div className="flex items-center space-x-2">
-        {icon ??
-          (LanguageIcon && (
-            <LanguageIcon
-              width={18}
-              height={18}
-              aria-label={LanguageData.title}
-            />
-          ))}
-        {LanguageData ? (
-          <span className="sr-only">{LanguageData.title}</span>
-        ) : null}
-        {title ?? <p>{title}</p>}
-      </div>
+      {children}
+    </div>
+  );
+};
+
+interface CodeBlockIconProps extends ComponentProps<"div"> {
+  language?: string;
+}
+
+const CodeBlockIcon = ({ language, className }: CodeBlockIconProps) => {
+  return (
+    <FileIcon
+      width={16}
+      height={16}
+      fileName={`.${language ?? ""}`}
+      autoAssign={true}
+      className={cn(className)}
+    />
+  );
+};
+
+type CodeBlockGroupProps = ComponentProps<"div">;
+
+const CodeBlockGroup = ({
+  children,
+  className,
+  ...props
+}: CodeBlockGroupProps) => {
+  return (
+    <div
+      className={cn(
+        "flex items-center space-x-2",
+        "text-sm text-neutral-600 dark:text-neutral-400",
+        className,
+      )}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -88,4 +104,10 @@ const CodeBlockContent = ({
   );
 };
 
-export { CodeBlock, CodeBlockHeader, CodeBlockContent };
+export {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockIcon,
+  CodeBlockGroup,
+  CodeBlockContent,
+};
