@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/docs/:folder/:slug*.md",
+        source: "/docs/:folder/:slug*.mdx",
         destination: "/api/docs/:folder/:slug*",
       },
     ];
