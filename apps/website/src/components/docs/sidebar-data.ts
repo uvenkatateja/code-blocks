@@ -149,6 +149,11 @@ export const SidebarLinksData: SidebarLinks[] = [
         icon: CandyIcon,
         href: "/docs/sugar-high/highlighter",
       },
+      {
+        title: "Line Numbers",
+        icon: ListOrderedIcon,
+        href: "/docs/sugar-high/line-numbers",
+      },
     ],
   },
 ];

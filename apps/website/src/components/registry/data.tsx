@@ -84,7 +84,7 @@ const StoresFiles: RegistryComponent[] = [
       name: "package-manager-store",
       type: "registry:file",
       target: "src/stores/packageManager.ts",
-      dependencies: ["zustand" ],
+      dependencies: ["zustand"],
     },
   },
 ];
@@ -191,6 +191,21 @@ const UIComponents: RegistryComponent[] = [
     ),
     shadcnRegistry: {
       name: "code-block-client-sugar-high",
+      type: "registry:component",
+      dependencies: ["sugar-high"],
+    },
+  },
+  {
+    title: "Code Block - Client Sugar High + Line Numbers",
+    fileType: "tsx",
+    fileSource: `${codeblockComponent}/client/sugar-high.tsx`,
+    exampleFileSource: `${componentsFolder}/previews/code-block-sugar-high-line-numbers-example.tsx`,
+    reactComponent: lazy(
+      () =>
+        import("@/components/previews/code-block-sugar-high-line-numbers-example"),
+    ),
+    shadcnRegistry: {
+      name: "code-block-client-sugar-high-line-numbers",
       type: "registry:component",
       dependencies: ["sugar-high"],
     },
