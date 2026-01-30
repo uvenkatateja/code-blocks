@@ -1,5 +1,5 @@
 {
-  "name": "@pheralb/cb-eslint",
+  "name": "@code-blocks/eslint",
   "private": true,
   "type": "module",
   "exports": {
