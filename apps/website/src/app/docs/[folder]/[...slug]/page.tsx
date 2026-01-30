@@ -51,7 +51,7 @@ const DocsPage = async ({ params }: DocsPageProps) => {
             <DocOptions
               content={data.content}
               folder={data.folder}
-              file={data._meta.fileName}
+              file={`${document}.mdx`}
             />
           </div>
           <p className="text-lg text-neutral-600 dark:text-neutral-400">

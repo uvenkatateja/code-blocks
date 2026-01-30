@@ -11,15 +11,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Button, buttonVariants } from "../ui/button";
+} from "@/components/ui/dropdown-menu";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   ArrowUpRightIcon,
   CheckCheckIcon,
   ChevronDownIcon,
   CopyIcon,
 } from "lucide-react";
-import { ExternalLink } from "../ui/external-link";
+import { ExternalLink } from "@/components/ui/external-link";
 
 interface DocOptionsProps extends ComponentProps<"div"> {
   content: string;
@@ -73,7 +73,7 @@ const DocOptions = ({ content, folder, file }: DocOptionsProps) => {
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <ExternalLink
-            href={`${globals.githubUrl}/blob/next/apps/website/src/docs/${folder}/${file}`}
+            href={`${globals.githubUrl}/blob/main/apps/website/src/docs/${folder}/${file}`}
           >
             <span>Edit on GitHub</span>
             <ArrowUpRightIcon size={14} />
