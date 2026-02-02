@@ -27,7 +27,7 @@ For some colors, we use [**neutral** theme](https://tailwindcss.com/docs/colors)
 <CodeBlockSelectPkg
   type="install"
   title="Required Dependencies"
-  command="@base-ui/react clsx tailwind-merge lucide-react @react-symbols/icons"
+  command="clsx tailwind-merge lucide-react @react-symbols/icons"
 />
 
 3. Add `@` alias to your `tsconfig.json`:
@@ -51,6 +51,34 @@ import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+```
+
+### Blocks
+
+You'll need to install [@base-ui/react](https://base-ui.com/) to use the Blocks components:
+
+1. Install the package:
+
+<CodeBlockSelectPkg
+  type="install"
+  title="Base UI"
+  command="@base-ui/react"
+/>
+
+2. Add `root` class to global `<body>` tag:
+
+```html title="app/layout.tsx"
+<body>
+  <div className="root">{children}</div>
+</body>
+```
+
+3. Add the following CSS to your global stylesheet:
+
+```css title="globals.css"
+.root {
+  isolation: isolate;
 }
 ```
 
