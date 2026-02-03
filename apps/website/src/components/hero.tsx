@@ -14,6 +14,7 @@ const Hero = () => {
       className={cn(
         "not-prose",
         "flex flex-col space-y-4 pt-10 pb-6 md:pt-12 md:pb-10",
+        "animate-in fill-mode-backwards fade-in slide-in-from-bottom-4 duration-500",
       )}
     >
       <div className="flex flex-col items-center justify-center space-y-2">
@@ -27,6 +28,7 @@ const Hero = () => {
       <div
         className={cn(
           "flex flex-col items-center justify-center space-y-2 md:flex-row md:space-y-0 md:space-x-2",
+          "animate-in fill-mode-backwards fade-in slide-in-from-bottom-4 duration-500 delay-100",
         )}
       >
         <Link

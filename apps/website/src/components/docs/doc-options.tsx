@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useState, type ComponentProps } from "react";
 
 import { cn } from "@/utils/cn";
@@ -11,15 +12,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Button, buttonVariants } from "../ui/button";
+} from "@/components/ui/dropdown-menu";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   ArrowUpRightIcon,
   CheckCheckIcon,
   ChevronDownIcon,
   CopyIcon,
 } from "lucide-react";
-import { ExternalLink } from "../ui/external-link";
+import { ExternalLink } from "@/components/ui/external-link";
 
 interface DocOptionsProps extends ComponentProps<"div"> {
   content: string;
@@ -30,6 +31,7 @@ interface DocOptionsProps extends ComponentProps<"div"> {
 const DocOptions = ({ content, folder, file }: DocOptionsProps) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
+  const pathname = usePathname();
 
   const handleCopyMarkdown = () => {
     copyToClipboard(content);
@@ -66,14 +68,14 @@ const DocOptions = ({ content, folder, file }: DocOptionsProps) => {
       </div>
       <DropdownMenuContent align="end">
         <DropdownMenuItem asChild>
-          <ExternalLink href={`${window.location.href}.mdx`}>
+          <ExternalLink href={`${pathname}.mdx`}>
             <span>View as Markdown</span>
             <ArrowUpRightIcon size={14} />
           </ExternalLink>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <ExternalLink
-            href={`${globals.githubUrl}/blob/next/apps/website/src/docs/${folder}/${file}`}
+            href={`${globals.githubUrl}/blob/main/apps/website/src/docs/${folder}/${file}`}
           >
             <span>Edit on GitHub</span>
             <ArrowUpRightIcon size={14} />

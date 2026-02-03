@@ -18,7 +18,7 @@ const Home = () => {
     <>
     <Container>
       <Header layout="app" />
-      <Article className="pb-12">
+      <Article className="pb-14">
         <MDX code={document.mdx} />
       </Article>
     </Container>

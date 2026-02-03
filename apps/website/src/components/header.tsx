@@ -5,6 +5,7 @@ import GithubLink from "@/components/github-link";
 import SponsorLink from "@/components/sponsor-link";
 import ThemeToggle from "@/components/theme-toggle";
 import SearchDocs from "@/components/docs/search-docs";
+import { LogoWithoutBg } from "./logo";
 
 interface HeaderProps {
   layout: "docs" | "app";
@@ -26,11 +27,13 @@ const Header = ({ layout }: HeaderProps) => {
         <Link
           href="/"
           className={cn(
+            "flex items-center space-x-2.5",
             "text-xl font-semibold tracking-tight transition-colors",
             "hover:text-neutral-700 dark:hover:text-neutral-300",
           )}
         >
-          Code Blocks
+          <LogoWithoutBg width={20} height={20} className="shrink-0" />
+          <span>Code Blocks</span>
         </Link>
         <div className="flex items-center gap-4">
           <SearchDocs />

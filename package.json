@@ -1,7 +1,7 @@
 {
-  "name": "@pheralb/cb-workspace",
+  "name": "@code-blocks/workspace",
   "private": true,
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.28.2",
   "engines": {
     "node": ">=20"
   },
@@ -9,10 +9,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "website:lint": "pnpm --filter @pheralb/cb-website run check:lint",
-    "website:build": "pnpm --filter @pheralb/cb-website run build",
-    "website:build-cc": "pnpm --filter @pheralb/cb-website run build:cc",
-    "website:registry": "pnpm --filter @pheralb/cb-website run check:registry",
+    "website:lint": "pnpm --filter @code-blocks/website run check:lint",
+    "website:build": "pnpm --filter @code-blocks/website run build",
+    "website:build-cc": "pnpm --filter @code-blocks/website run build:cc",
+    "website:registry": "pnpm --filter @code-blocks/website run check:registry",
+    "website:build-registry": "pnpm --filter @code-blocks/website run build:registry",
     "typecheck": "turbo run typecheck",
     "check:format": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "fix:format": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"

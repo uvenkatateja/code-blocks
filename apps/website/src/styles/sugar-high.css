@@ -44,5 +44,5 @@ pre.sh-line-numbers .sh__line::before {
   margin-right: 1rem;
   margin-left: 0.3rem;
   display: inline-block;
-  @apply text-right font-mono text-xs text-neutral-400 dark:text-neutral-600;
+  @apply text-right font-mono text-xs text-neutral-500;
 }

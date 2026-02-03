@@ -3,15 +3,16 @@ import type { Metadata } from "next";
 import { globals } from "@/globals";
 import { notFound } from "next/navigation";
 
-import MDX from "@/components/mdx";
 import { cn } from "@/utils/cn";
 import { getDocument } from "@/utils/docs";
 
-import Article from "@/components/docs/doc-article";
+import MDX from "@/components/mdx";
 import Container from "@/components/container";
+import Article from "@/components/docs/doc-article";
+
+import DocOptions from "@/components/docs/doc-options";
 import TableOfContents from "@/components/docs/toc-menu";
 import ShowCategories from "@/components/docs/show-categories";
-import DocOptions from "@/components/docs/doc-options";
 
 interface DocsPageProps {
   params: Promise<{ folder: string; slug: string[] }>;
@@ -22,6 +23,7 @@ export async function generateMetadata({
 }: DocsPageProps): Promise<Metadata> {
   const { folder, slug } = await params;
   const document = slug.join("/");
+  const websiteUrl = "https://code-blocks.pheralb.dev";
   const data = getDocument({
     folder,
     document,
@@ -29,6 +31,21 @@ export async function generateMetadata({
   return {
     title: `${data?.title} - ${globals.title}`,
     description: data?.description,
+    openGraph: {
+      type: "website",
+      url: new URL(`/${slug}`, websiteUrl),
+      title: `${data?.title} - ${globals.title}`,
+      description: data?.description,
+      siteName: websiteUrl,
+      images: [
+        {
+          url: new URL(
+            `/api/docs/og?document=${document}&folder=${folder}`,
+            websiteUrl,
+          ),
+        },
+      ],
+    },
   };
 }
 
@@ -51,7 +68,7 @@ const DocsPage = async ({ params }: DocsPageProps) => {
             <DocOptions
               content={data.content}
               folder={data.folder}
-              file={data._meta.fileName}
+              file={`${document}.mdx`}
             />
           </div>
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
