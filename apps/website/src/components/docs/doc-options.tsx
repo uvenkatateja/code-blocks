@@ -46,10 +46,10 @@ const DocOptions = ({ content, folder, file }: DocOptionsProps) => {
           size="sm"
           variant="outline"
           onClick={handleCopyMarkdown}
-          className="rounded-r-none border-r-0"
+          className="w-full rounded-r-none border-r-0"
         >
           {isCopied ? <CheckCheckIcon size={14} /> : <CopyIcon size={14} />}
-          <span>{isCopied ? "Copied" : "Copy page"}</span>
+          <span>{isCopied ? "Copied" : "Copy"}</span>
         </Button>
         <DropdownMenuTrigger
           className={cn(

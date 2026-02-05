@@ -91,7 +91,14 @@ const ShowCategories = ({
   };
 
   return (
-    <div className={cn("flex items-center space-x-1.5", className)} {...props}>
+    <div
+      className={cn(
+        "flex items-center space-x-1.5",
+        "overflow-y-auto pb-2 md:pb-0",
+        className,
+      )}
+      {...props}
+    >
       {categories.length > 1 ? (
         categories.map((cat) => {
           const Icon = getCategoryIcon(cat);

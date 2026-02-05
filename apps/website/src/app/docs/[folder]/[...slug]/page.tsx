@@ -59,22 +59,24 @@ const DocsPage = async ({ params }: DocsPageProps) => {
   if (!data) return notFound();
   return (
     <>
-      <Container className="flex flex-col space-y-8 py-6 md:py-8">
+      <Container className="flex flex-col space-y-8 pt-6 pb-8 md:pt-8 md:pb-10">
         <div className="flex flex-col space-y-1 pt-2">
           <div className="flex w-full items-center justify-between">
-            <h4 className="font-headings text-4xl font-semibold tracking-tight">
+            <h4 className="font-headings text-3xl font-semibold tracking-tight md:text-4xl">
               {data.title}
             </h4>
+          </div>
+          <p className="text-base text-neutral-600 md:text-lg dark:text-neutral-400">
+            {data.description}
+          </p>
+          <div className="mt-2 flex w-full flex-col justify-between space-y-1 md:mt-0 md:flex-row md:items-center md:space-y-0">
+            <ShowCategories categories={data.category} />
             <DocOptions
               content={data.content}
               folder={data.folder}
               file={`${document}.mdx`}
             />
           </div>
-          <p className="text-lg text-neutral-600 dark:text-neutral-400">
-            {data.description}
-          </p>
-          <ShowCategories className="mt-2" categories={data.category} />
         </div>
         <Article>
           <MDX code={data.mdx} />
