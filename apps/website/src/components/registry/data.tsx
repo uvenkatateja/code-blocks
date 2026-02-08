@@ -323,6 +323,27 @@ const Blocks: RegistryComponent[] = [
         "src/components/code-block/blocks/copy-with-tabs-package-manager.tsx",
     },
   },
+  {
+    title: "Blocks - Multi Tabs",
+    fileType: "tsx",
+    group: "blocks",
+    fileSource: `${codeblockComponent}/blocks/multi-tabs.tsx`,
+    exampleFileSource: `${codeblockComponent}/blocks/multi-tabs.tsx`,
+    reactComponent: lazy(
+      () => import("@/components/code-block/blocks/multi-tabs"),
+    ),
+    shadcnRegistry: {
+      name: "block-multi-tabs",
+      type: "registry:block",
+      dependencies: ["@react-symbols/icons"],
+      registryDependencies: [
+        "copy-button",
+        "code-block-structure",
+        "code-block-client-shiki",
+      ],
+      target: "src/components/code-block/blocks/multi-tabs.tsx",
+    },
+  },
 ];
 
 const RegistryData: RegistryComponent[] = [

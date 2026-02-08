@@ -86,6 +86,10 @@ export const SidebarLinksData: SidebarLinks[] = [
             href: "/docs/react/blocks/inline-code",
           },
           {
+            title: "Multi Tabs",
+            href: "/docs/react/blocks/multi-tabs",
+          },
+          {
             title: "Persist Package Manager",
             href: "/docs/react/blocks/persist-package-manager",
           },
