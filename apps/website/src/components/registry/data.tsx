@@ -150,7 +150,7 @@ const UIComponents: RegistryComponent[] = [
       () => import("@/components/previews/code-block-structure-example"),
     ),
     shadcnRegistry: {
-      name: "code-block-structure",
+      name: "code-block",
       type: "registry:component",
       dependencies: ["lucide-react", "@react-symbols/icons"],
       target: "src/components/code-block/code-block.tsx",
@@ -162,13 +162,13 @@ const UIComponents: RegistryComponent[] = [
     fileSource: `${codeblockComponent}/mdx/pre-shiki.tsx`,
     group: "shiki",
     shadcnRegistry: {
-      name: "code-block-mdx-shiki",
+      name: "mdx-shiki",
       type: "registry:component",
       devDependencies: ["@types/mdx"],
       registryDependencies: [
         "react-to-text",
         "copy-to-clipboard",
-        "code-block-structure",
+        "code-block",
       ],
       target: "src/components/code-block/mdx/pre-shiki.tsx",
     },
@@ -179,14 +179,14 @@ const UIComponents: RegistryComponent[] = [
     fileSource: `${codeblockComponent}/mdx/pre-sugar-high.tsx`,
     group: "sugar-high",
     shadcnRegistry: {
-      name: "code-block-mdx-sugar-high",
+      name: "mdx-sugar-high",
       type: "registry:component",
       devDependencies: ["@types/mdx"],
       registryDependencies: [
         "react-to-text",
         "sugar-high-highlighter",
         "copy-to-clipboard",
-        "code-block-structure",
+        "code-block",
       ],
       target: "src/components/code-block/mdx/pre-sugar-high.tsx",
     },
@@ -201,7 +201,7 @@ const UIComponents: RegistryComponent[] = [
       () => import("@/components/previews/code-block-shiki-example"),
     ),
     shadcnRegistry: {
-      name: "code-block-client-shiki",
+      name: "client-shiki",
       type: "registry:component",
       dependencies: ["shiki"],
       registryDependencies: ["shiki-highlighter"],
@@ -218,7 +218,7 @@ const UIComponents: RegistryComponent[] = [
       () => import("@/components/previews/code-block-sugar-high-example"),
     ),
     shadcnRegistry: {
-      name: "code-block-client-sugar-high",
+      name: "client-sugar-high",
       type: "registry:component",
       registryDependencies: ["sugar-high-highlighter"],
       target: "src/components/code-block/client/sugar-high.tsx",
@@ -235,7 +235,7 @@ const UIComponents: RegistryComponent[] = [
         import("@/components/previews/code-block-sugar-high-line-numbers-example"),
     ),
     shadcnRegistry: {
-      name: "code-block-client-sugar-high-line-numbers",
+      name: "client-sugar-high-line-numbers",
       type: "registry:component",
       registryDependencies: ["sugar-high-highlighter"],
       target: "src/components/code-block/client/sugar-high.tsx",
@@ -273,7 +273,7 @@ const Blocks: RegistryComponent[] = [
     shadcnRegistry: {
       name: "block-inline-code",
       type: "registry:block",
-      registryDependencies: ["code-block-client-shiki"],
+      registryDependencies: ["client-shiki"],
       target: "src/components/code-block/blocks/inline-code.tsx",
     },
   },
@@ -292,8 +292,8 @@ const Blocks: RegistryComponent[] = [
       dependencies: ["@react-symbols/icons"],
       registryDependencies: [
         "copy-button",
-        "code-block-structure",
-        "code-block-client-shiki",
+        "code-block",
+        "client-shiki",
         "package-manager-store",
       ],
       target:
@@ -315,8 +315,8 @@ const Blocks: RegistryComponent[] = [
       dependencies: ["@react-symbols/icons"],
       registryDependencies: [
         "copy-button",
-        "code-block-structure",
-        "code-block-client-shiki",
+        "code-block",
+        "client-shiki",
         "package-manager-store",
       ],
       target:
@@ -336,11 +336,7 @@ const Blocks: RegistryComponent[] = [
       name: "block-multi-tabs",
       type: "registry:block",
       dependencies: ["@react-symbols/icons"],
-      registryDependencies: [
-        "copy-button",
-        "code-block-structure",
-        "code-block-client-shiki",
-      ],
+      registryDependencies: ["copy-button", "code-block", "client-shiki"],
       target: "src/components/code-block/blocks/multi-tabs.tsx",
     },
   },
