@@ -25,12 +25,12 @@ export default MyComponent;
 <MDXHighlightTabs>
   <TabsContent value="shiki">
 
-<CopyShadcnCommand name="code-block-mdx-shiki" />
+<CopyShadcnCommand name="mdx-shiki" />
 
   </TabsContent>
   <TabsContent value="sugar-high">
     
-<CopyShadcnCommand name="code-block-mdx-sugar-high" />
+<CopyShadcnCommand name="mdx-sugar-high" />
 
   </TabsContent>
 </MDXHighlightTabs>
@@ -64,7 +64,11 @@ Setup your MDX highlighter:
 
 <DocCard folder="shiki" document="add-properties" />
 
-2. Setup Shiki Markdown/MDX integration:
+2. Setup Shiki highlighter:
+
+<DocCard folder="shiki" document="highlighter" />
+
+3. Setup Shiki Markdown integration:
 
 <DocCard
   folder="shiki"
@@ -72,13 +76,9 @@ Setup your MDX highlighter:
   anchor="markdownmdx-integration"
 />
 
-3. Add light/dark themes to your Shiki setup:
-
-<DocCard folder="shiki" document="highlighter" anchor="lightdark-mode" />
-
 4. Create your `PreShikiComponent` component:
 
-<ShowSource component="code-block-mdx-shiki" />
+<ShowSource component="mdx-shiki" />
 
 5. Usage:
 
@@ -103,7 +103,7 @@ const MDXComponents: MDXComponentsType = {
 
 2. Create your `PreSugarHighComponent` component:
 
-<ShowSource component="code-block-mdx-sugar-high" />
+<ShowSource component="mdx-sugar-high" />
 
 3. Usage:
 

@@ -22,6 +22,28 @@ Using Zustand, we can create a custom store to manage the selected package manag
 
 <CodeBlockSelectPkg title="Zustand" type="install" command="zustand" />
 
-2. Create a custom store ``stores/packageManager.ts``:
+2. Create a custom store `stores/packageManager.ts`:
 
 <ShowSource component="package-manager-store" />
+
+## Usage
+
+Import the store and use it in your components:
+
+```tsx
+import { usePackageManager } from "@/stores/packageManager";
+
+const PackageManagerSelector = () => {
+  const { packageManager, setPackageManager } = usePackageManager();
+  return (
+    <select
+      value={packageManager}
+      onChange={(e) => setPackageManager(e.target.value)}
+    >
+      <option value="npm">npm</option>
+      <option value="yarn">yarn</option>
+      <option value="pnpm">pnpm</option>
+    </select>
+  );
+};
+```

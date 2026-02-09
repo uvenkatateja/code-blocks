@@ -1,34 +1,91 @@
-## Getting Started
+<div align="center">
+  <a href="https://code-blocks.pheralb.dev">
+    <img
+      src="https://code-blocks.pheralb.dev/images/code-blocks-svg.svg"
+      alt="@pheralb/code-blocks"
+      height="60"
+    />
+  </a>
+  <p />
+  <p>
+    <b>
+      A code-block UI component. Copy-Paste. Customizable.
+    </b>
+  </p>
 
-First, run the development server:
+<a href="http://code-blocks.pheralb.dev/docs">Get Started</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="http://code-blocks.pheralb.dev/components">Components</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="http://code-blocks.pheralb.dev/blocks">Blocks</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="#-contributing">Contributing</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="#-license">License</a>
+
+<img
+  src="./apps/website/public/images/screenshot-2.png"
+  alt="@pheralb/code-blocks screenshot"
+/>
+
+</div>
+
+<div align="center">
+
+![Next.js Badge](https://img.shields.io/badge/Docs-000?logo=nextdotjs&logoColor=fff&style=flat)
+![Tailwind CSS Badge](https://img.shields.io/badge/Styles-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
+![React Badge](https://img.shields.io/badge/Components-61DAFB?logo=react&logoColor=000&style=flat)
+![TypeScript Badge](https://img.shields.io/badge/Utilities-3178C6?logo=typescript&logoColor=fff&style=flat)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Fcode-blocks%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/code-blocks/goto?ref=main)
+![GitHub stars](https://img.shields.io/github/stars/pheralb/code-blocks)
+![GitHub issues](https://img.shields.io/github/issues/pheralb/code-blocks)
+
+</div>
+
+## Features
+
+- 📋 **Copy-Paste**: Copy code with a single click, it's 100% yours.
+- 🎨 **Customizable**: Styled with Tailwind CSS, easily customize it to fit your design.
+- 📦 **Components & Blocks**: Basic structure and blocks for building your own code-block UI.
+- 🖌️ **[Shiki](https://github.com/shikijs/shiki) & [Sugar-High](https://github.com/huozhi/sugar-high/)**: Choose your syntax highlighter.
+- ⚙️ [**shadcn/ui**](https://ui.shadcn.com) compatible: Add components and utilities using shadcn/ui CLI.
+
+## Contributing
+
+We welcome contributions to enhance the functionality, design, and documentation of this project. To contribute, please read our [Contributing Guide](https://github.com/pheralb/code-blocks/blob/main/CONTRIBUTING.md).
+
+### Development Setup
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:pheralb/code-blocks.git
+cd code-blocks
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Install pnpm globally if you haven't already:
+npm i pnpm@latest -g
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Install project dependencies:
+pnpm install
+```
 
-## Learn More
+3. Start the development server:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `pnpm dev`: Start the development server for the docs website.
+- `pnpm website:build-registry`: Build the component and block registry.
+- `pnpm website:build`: Build the docs website for production.
+- `pnpm website:build-cc`: Build content using content-collections CLI.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/pheralb/code-blocks/blob/main/LICENSE) file for details.

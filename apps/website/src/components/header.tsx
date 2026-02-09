@@ -5,7 +5,7 @@ import GithubLink from "@/components/github-link";
 import SponsorLink from "@/components/sponsor-link";
 import ThemeToggle from "@/components/theme-toggle";
 import SearchDocs from "@/components/docs/search-docs";
-import { LogoWithoutBg } from "./logo";
+import { LogoWithBg, LogoWithoutBg } from "@/components/logo";
 
 interface HeaderProps {
   layout: "docs" | "app";
@@ -27,13 +27,18 @@ const Header = ({ layout }: HeaderProps) => {
         <Link
           href="/"
           className={cn(
-            "flex items-center space-x-2.5",
-            "text-xl font-semibold tracking-tight transition-colors",
+            "flex items-center gap-2",
+            "font-semibold tracking-tight transition-colors md:text-xl",
             "hover:text-neutral-700 dark:hover:text-neutral-300",
           )}
         >
-          <LogoWithoutBg width={20} height={20} className="shrink-0" />
-          <span>Code Blocks</span>
+          <LogoWithoutBg
+            width={20}
+            height={20}
+            className="hidden shrink-0 md:block"
+          />
+          <LogoWithBg width={24} height={24} className="shrink-0 md:hidden" />
+          <span className="hidden md:block">Code Blocks</span>
         </Link>
         <div className="flex items-center gap-4">
           <SearchDocs />

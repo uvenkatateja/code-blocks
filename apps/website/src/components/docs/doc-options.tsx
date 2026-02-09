@@ -46,10 +46,10 @@ const DocOptions = ({ content, folder, file }: DocOptionsProps) => {
           size="sm"
           variant="outline"
           onClick={handleCopyMarkdown}
-          className="rounded-r-none border-r-0"
+          className="w-full rounded-r-none border-r-0"
         >
           {isCopied ? <CheckCheckIcon size={14} /> : <CopyIcon size={14} />}
-          <span>{isCopied ? "Copied" : "Copy page"}</span>
+          <span>{isCopied ? "Copied" : "Copy"}</span>
         </Button>
         <DropdownMenuTrigger
           className={cn(
@@ -67,14 +67,18 @@ const DocOptions = ({ content, folder, file }: DocOptionsProps) => {
         </DropdownMenuTrigger>
       </div>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem asChild>
-          <ExternalLink href={`${pathname}.mdx`}>
+        <DropdownMenuItem>
+          <ExternalLink
+            href={`${pathname}.mdx`}
+            className="flex items-center space-x-2"
+          >
             <span>View as Markdown</span>
             <ArrowUpRightIcon size={14} />
           </ExternalLink>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild>
+        <DropdownMenuItem>
           <ExternalLink
+            className="flex items-center space-x-2"
             href={`${globals.githubUrl}/blob/main/apps/website/src/docs/${folder}/${file}`}
           >
             <span>Edit on GitHub</span>

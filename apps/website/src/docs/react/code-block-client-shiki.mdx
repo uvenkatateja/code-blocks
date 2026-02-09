@@ -4,15 +4,13 @@ description: Create a client-side Code Block component using Shiki for syntax hi
 category: [React, Client, Shiki, Components]
 ---
 
-<ComponentPreview component="code-block-client-shiki" />
+<ComponentPreview component="client-shiki" />
 
 ## Installation
 
 ### shadcn/ui
 
-<CopyShadcnCommand
-  name="code-block-client-shiki"
-/>
+<CopyShadcnCommand name="client-shiki" />
 
 ### Manual
 
@@ -26,11 +24,11 @@ Before creating the component, make sure you have the basic structure:
 
 2. Create the Code Block Client component:
 
-<ShowSource component="code-block-client-shiki" />
+<ShowSource component="client-shiki" />
 
 ## Usage
 
-Now you can use the `CodeblockShiki` into your ``CodeBlockContent`` component:
+Now you can use the `CodeblockShiki` into your `CodeBlockContent` component:
 
 ```tsx {6,11}
 import {
@@ -50,6 +48,6 @@ import { CodeblockShiki } from "@/components/code-block/client/shiki";
 
 ## Props
 
-<ShowProps component="code-block-client-shiki" />
+<ShowProps component="client-shiki" />
 
 > `Languages` type is from the [`shiki` utility](/docs/shiki/highlighter#languages).

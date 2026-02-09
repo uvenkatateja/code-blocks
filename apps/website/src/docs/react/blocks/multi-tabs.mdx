@@ -1,0 +1,38 @@
+---
+title: Multi Tabs
+description: Show different code blocks with tabs and copy button.
+category: [React, Base UI, Shiki, Blocks]
+---
+
+<ComponentPreview component="block-multi-tabs" />
+
+## Installation
+
+### shadcn/ui
+
+<CopyShadcnCommand name="block-multi-tabs" />
+
+### Manual
+
+1. Create the basic Code Block structure:
+
+<DocCard folder="react" document="code-block" />
+
+2. Create the following client components:
+
+<Grid>
+  <DocCard folder="react" document="copy-button" />
+  <DocCard folder="react" document="code-block-client-shiki" />
+</Grid>
+
+3. Add [Tabs UI component from shadcn/ui](https://ui.shadcn.com/docs/components/base/tabs):
+
+<CodeBlockSelectPkg
+  type="dlx"
+  title="shadcn/ui Tabs"
+  command="shadcn@latest add tabs"
+/>
+
+4. Finally, create the block component:
+
+<ShowSource component="block-multi-tabs" />
