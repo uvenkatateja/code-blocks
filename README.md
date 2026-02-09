@@ -23,6 +23,11 @@
 <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
 <a href="#-license">License</a>
 
+<img
+  src="./apps/website/public/images/screenshot-2.png"
+  alt="@pheralb/code-blocks screenshot"
+/>
+
 </div>
 
 <div align="center">
@@ -39,12 +44,15 @@
 
 ## Features
 
-- **Copy-Paste**: Copy code with a single click, it's 100% yours.
-- **Customizable**: Styled with Tailwind CSS, easily customize it to fit your design.
-- **Components & Blocks**: Basic structure and blocks for building your own code-block UI.
-- **[Shiki](https://github.com/shikijs/shiki) & [Sugar-High](https://github.com/huozhi/sugar-high/)**: Choose your syntax highlighter.
+- 📋 **Copy-Paste**: Copy code with a single click, it's 100% yours.
+- 🎨 **Customizable**: Styled with Tailwind CSS, easily customize it to fit your design.
+- 📦 **Components & Blocks**: Basic structure and blocks for building your own code-block UI.
+- 🖌️ **[Shiki](https://github.com/shikijs/shiki) & [Sugar-High](https://github.com/huozhi/sugar-high/)**: Choose your syntax highlighter.
+- ⚙️ [**shadcn/ui**](https://ui.shadcn.com) compatible: Add components and utilities using shadcn/ui CLI.
 
 ## Contributing
+
+We welcome contributions to enhance the functionality, design, and documentation of this project. To contribute, please read our [Contributing Guide](https://github.com/pheralb/code-blocks/blob/main/CONTRIBUTING.md).
 
 ### Development Setup
 
