@@ -46,8 +46,8 @@ const ComponentPreview = ({ component, children }: ComponentPreviewProps) => {
           <Showcase title="Preview">
             <Suspense
               fallback={
-                <div className="flex items-center justify-center text-sm">
-                  <LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
+                <div className="flex flex-col items-center justify-center text-sm text-neutral-700 dark:text-neutral-300">
+                  <LoaderIcon size={14} className="animate-spin" />
                   <span>Preparing...</span>
                 </div>
               }
