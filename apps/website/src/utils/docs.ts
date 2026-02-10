@@ -7,7 +7,6 @@ import {
   allShikis,
   allReacts,
   allShighs,
-  type General,
   type Gstarted,
   type Shiki,
   type Shigh,
@@ -15,7 +14,6 @@ import {
 } from "content-collections";
 
 const allDocsArray = [
-  ...allGenerals,
   ...allGstarteds,
   ...allShikis,
   ...allShighs,
@@ -23,7 +21,7 @@ const allDocsArray = [
 ];
 
 type Doc = Document &
-  (General | Gstarted | Shiki | Shigh | React) & {
+  (Gstarted | Shiki | Shigh | React) & {
     tableOfContents: ToCItem[];
   };
 
@@ -69,16 +67,13 @@ const getDocsByFolder = () => {
   );
 };
 
-const getDocumentContent = ({
-  folder,
-  document,
-}: GetDocument): string | undefined => {
-  const normalizedDocument = document.replace(/\\/g, "/");
-  const doc = allDocs.find((doc) => {
-    const normalizedPath = doc._meta.path.replace(/\\/g, "/");
-    return doc.folder === folder && normalizedPath === normalizedDocument;
-  });
-  return doc ? doc.mdx : undefined;
+const getGeneralDocument = (document: string): Doc | undefined => {
+  const doc = allGenerals.find((doc) => doc._meta.path === document);
+  if (!doc) {
+    return undefined;
+  }
+  const tableOfContents = getTableOfContents(doc.content);
+  return { ...doc, tableOfContents };
 };
 
-export { getDocument, getDocsByFolder, getDocumentContent };
+export { getDocument, getDocsByFolder, getGeneralDocument };
