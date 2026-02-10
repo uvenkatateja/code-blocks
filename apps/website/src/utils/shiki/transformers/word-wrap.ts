@@ -4,8 +4,14 @@ const wordWrapContent = (): ShikiTransformer => {
   return {
     name: "WordWrap",
     pre(node) {
-      const shikiStyles = node.properties.class;
-      node.properties.class = `${shikiStyles} shiki-word-wrap`;
+      const existingClass = node.properties.class;
+      if (Array.isArray(existingClass)) {
+        existingClass.push("shiki-word-wrap");
+      } else if (typeof existingClass === "string") {
+        node.properties.class = `${existingClass} shiki-word-wrap`;
+      } else {
+        node.properties.class = "shiki-word-wrap";
+      }
     },
   };
 };
