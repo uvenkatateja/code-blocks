@@ -15,7 +15,7 @@ import rehypeShiki from "@shikijs/rehype/core";
 import { compileMDX } from "@content-collections/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-import { highlight } from "./src/utils/shiki";
+import { highlight } from "./src/utils/shiki/highlight";
 import { rehypeShikiOptions } from "./src/mdx/plugins/rehypeShiki";
 import { rehypeComponent } from "./src/mdx/plugins/rehypeComponent";
 import { rehypeReactDoc } from "./src/mdx/plugins/rehypeReactDoc";
