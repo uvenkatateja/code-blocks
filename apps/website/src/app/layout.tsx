@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 import "@/styles/shiki.css";
 import "@/styles/sugar-high.css";
 
+import Script from "next/script";
 import { cn } from "@/utils/cn";
 import { fontSans, fontMono, fontHeadings } from "@/styles/fonts";
 
@@ -47,6 +48,11 @@ export default function RootLayout({
           "relative overscroll-none",
         )}
       >
+        <Script
+          defer={true}
+          src="https://umami.pheralb.dev/script.js"
+          data-website-id="0fdc2cef-bcee-4ad9-8209-db5491d8bf9a"
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
