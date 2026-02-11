@@ -1,0 +1,36 @@
+---
+title: Line Anchors
+description: Add clickable anchor links to line numbers for easy reference and sharing.
+category: [Shiki, Markdown, MDX]
+---
+
+## Installation
+
+### shadcn/ui
+
+<CopyShadcnCommand name="shiki-line-anchors" />
+
+### Manual
+
+1. Copy the `lineAnchors` transformer into your project:
+
+<ShowSource component="shiki-line-anchors" />
+
+`shiki-line-anchors` styles are defined in the `shiki.css` file:
+
+<DocCard folder="shiki" document="highlighter" anchor="styles" />
+
+2. Import the transformer in your `rehypeShiki` plugin:
+
+```ts title="Rehype Shiki Options"
+import { lineAnchors } from "@/utils/shiki/transformers/line-anchors";
+
+const rehypeShikiOptions: RehypeShikiCoreOptions = {
+  //...
+  transformers: [lineAnchors()],
+};
+
+export { rehypeShikiOptions };
+```
+
+Then, each line in your code blocks will have an anchor link (e.g., `#L1`, `#L2`) that users can click to navigate to specific lines.
